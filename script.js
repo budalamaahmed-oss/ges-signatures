@@ -180,20 +180,6 @@
     apply();
   }
 
-  /* ---- orbit ecosystem: hovering a domain lights its spoke and node ---- */
-  var orbit = document.querySelector('.orbit');
-  if (orbit) {
-    var setActive = function (i) {
-      document.querySelectorAll('.orbit .node, .orbit .spoke, .orbit-copy .domains li').forEach(function (el) { el.classList.toggle('active', el.dataset.i === i); });
-    };
-    document.querySelectorAll('.orbit .node, .orbit-copy .domains li').forEach(function (el) {
-      el.addEventListener('mouseenter', function () { setActive(el.dataset.i); });
-      el.addEventListener('focus', function () { setActive(el.dataset.i); });
-      el.addEventListener('mouseleave', function () { setActive(null); });
-      el.addEventListener('blur', function () { setActive(null); });
-    });
-  }
-
   /* ---- magnetic primary buttons: subtle, fine pointers only ---- */
   if (!reduce && finePointer) {
     document.querySelectorAll('.magnet').forEach(function (btn) {

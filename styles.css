@@ -996,3 +996,18 @@ html.lenis,html.lenis body{height:auto}
 .hub .name{font-size:1.15rem}
 .cta .rule{margin-bottom:clamp(56px,7vw,88px) !important}
 @media (max-width:900px){.presence .section-head{grid-template-columns:minmax(0,1fr)}}
+
+/* ============ 21. HOMEPAGE PARTNER FLOW (open, borderless; unlike the Solutions tile grid) ============ */
+.partner-flow-section .shell{display:grid;gap:var(--space-10)}
+.partner-flow-head{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--space-10);align-items:end}
+.partner-flow-head p{max-width:46ch}
+.partner-flow{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:var(--space-10) var(--space-12);border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);padding-block:var(--space-10)}
+.partner-flow li{display:grid;gap:var(--space-3);justify-items:center;width:150px;min-width:0;background:var(--bg);position:relative}
+.partner-flow li.lead{width:100%;padding-bottom:var(--space-8);border-bottom:1px solid var(--line);margin-bottom:var(--space-2)}
+.partner-flow img{max-height:36px;max-width:140px;width:auto;height:auto;filter:grayscale(1);opacity:.72;mix-blend-mode:multiply;transition:opacity var(--dur) var(--ease),filter var(--dur) var(--ease),transform 300ms var(--ease)}
+.partner-flow li:hover img{filter:none;opacity:1;transform:translateY(-2px)}
+.partner-flow li.lead img{max-height:64px;max-width:220px;filter:none;opacity:1}
+.partner-flow .role{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);text-align:center;line-height:1.6}
+.partner-flow li.lead .role{color:var(--accent);font-size:var(--text-label)}
+.partner-flow .name{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (max-width:900px){.partner-flow-head{grid-template-columns:minmax(0,1fr)}.partner-flow{gap:var(--space-8) var(--space-8)}.partner-flow li{width:120px}}

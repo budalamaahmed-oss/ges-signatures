@@ -89,7 +89,8 @@
         <h2>Tell us where you want to go.</h2>
         <p class="muted">A few details are enough. We read every enquiry and reply from the team, not a queue.</p>
       </div>
-      <form class="form editorial" id="contactForm" action="mailto:info@globalges.net" method="get" enctype="text/plain">
+      <form class="form editorial" id="contactForm" action="contact.php" method="post">
+        <div class="field" style="position:absolute;left:-9999px" aria-hidden="true"><label for="f-hp">Company website</label><input id="f-hp" name="company_website" type="text" tabindex="-1" autocomplete="off"></div>
         <div class="row">
           <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
           <div class="field"><label for="f-company">Company</label><input id="f-company" name="company" type="text" autocomplete="organization"></div>
@@ -119,7 +120,7 @@
         <div class="field"><label for="f-msg">Message</label><textarea id="f-msg" name="body" rows="4"></textarea></div>
         <div class="actions">
           <button class="btn btn-primary magnet" type="submit">Send enquiry <span class="arrow">→</span></button>
-          <p class="note">Opens a draft to info@globalges.net until the form has a backend.</p>
+          <p class="note">Sent straight to the GES team. We reply from a named person, not a queue.</p>
         </div>
       </form>
       <div class="trust-line"><p class="label">GES is appraised and certified to</p><ul class="badges small" aria-label="Organisational certifications"><li><img src="assets/certs/cmmi-ml3.png" alt="CMMI Services, Maturity Level 3" width="1051" height="376" loading="lazy"></li><li><img src="assets/certs/iso-20000.png" alt="ISO/IEC 20000-1, IT service management" width="478" height="454" loading="lazy"></li><li><img src="assets/certs/iso-27001.png" alt="ISO/IEC 27001, information security" width="478" height="454" loading="lazy"></li><li><img src="assets/certs/iso-22301.png" alt="ISO 22301, business continuity" width="478" height="454" loading="lazy"></li><li><img src="assets/certs/iso-38500.png" alt="ISO/IEC 38500, IT governance" width="478" height="454" loading="lazy"></li><li><img src="assets/certs/iso-42001.png" alt="ISO/IEC 42001, AI management systems" width="478" height="454" loading="lazy"></li></ul></div>

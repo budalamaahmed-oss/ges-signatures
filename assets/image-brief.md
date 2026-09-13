@@ -32,7 +32,7 @@ Every image follows the Assets plan in `design.md`: GES consultants with a clien
 - The blue neon data-centre image from the current site is not to be used anywhere.
 - No video slots on this page.
 
-## Projects page — complete image list (all thirty-one engagements)
+## Projects page — image list (twenty-three engagements; the remaining eight are held back for now)
 
 Same shared style line as above appended to every prompt. All 3:2 horizontal, 1800×1200. Sector scenes, never a depiction of the named institution's real building or logo. Save into `assets/projects/` with these names.
 
@@ -61,11 +61,3 @@ Same shared style line as above appended to every prompt. All 3:2 horizontal, 18
 | 21 | Dawiyat | Enterprise · KSA | `assets/projects/dawiyat.jpg` | needed | A regional data centre exterior at dawn: a low pale concrete building with a louvred facade, cooling plant behind a stone wall, a single engineer at the entrance, desert haze. |
 | 22 | Riyadh Airports | Transport · KSA | `assets/projects/riyadh-airports.jpg` | needed | Airside at an airport terminal at dawn: pale concrete pier, covered walkway with slender columns, an aircraft tail in the distance, ground crew far away, hazy warm light. |
 | 23 | Riyadh Metro | Transport · KSA | `assets/projects/riyadh-metro.jpg` | needed | Interior of a new metro station at early morning: sweeping pale ceiling, stone platform, glass screen doors closed, a single train standing, almost empty, soft warm light. |
-| 24 | Marriott Diplomatic Quarter | Hospitality · KSA | `assets/projects/marriott-dq.jpg` | needed | A hotel lobby in Riyadh at early morning: pale stone, brass details, a long timber reception desk, one guest checking in, soft daylight from a courtyard, calm and quiet. |
-| 25 | Saudi Care Clinic | Healthcare · KSA | `assets/projects/saudi-care-clinic.jpg` | needed | A clinic reception at early morning: pale stone counter, timber slats, a nurse at the desk, one patient waiting, soft daylight, clean and calm. |
-| 26 | Cegelec | Enterprise · KSA | `assets/projects/cegelec.jpg` | needed | An engineering workshop assembling telecom panels: a clean bench with panel enclosures and cable looms, two technicians in grey overalls, daylight from high windows, orderly and precise. |
-| 27 | Local Organizing Committee | Government · KSA | `assets/projects/local-organizing-committee.jpg` | needed | A tournament organising office: a long table with printed venue plans and schedules, four professionals in discussion, a window onto a stadium exterior in hazy morning light. |
-| 28 | Roads & Transport Authority | Transport · UAE | `assets/projects/rta.jpg` | needed | Elevated view of a modern Dubai highway interchange and metro viaduct at dawn: pale concrete curves, sparse traffic, hazy skyline far behind, warm light. |
-| 29 | Basra Oil Group | Energy · Iraq | `assets/projects/basra-oil.jpg` | needed | A project management office in an energy-sector headquarters: engineers at a large table with printed schedules and a paper Gantt chart, hard hats set aside on a shelf, a window onto a distant pale industrial skyline at dawn. |
-| 30 | Dugan Group | Enterprise · Türkiye | `assets/projects/dugan-group.jpg` | needed | A modern corporate office in Istanbul: a PMO team at a standing table with printed plans, a window onto a hazy Bosphorus morning, warm timber and stone interior. |
-| 31 | Tree Cities | Enterprise · Brazil | `assets/projects/tree-cities.jpg` | needed | A modern São Paulo office at early morning: an IT team at desks with laptops closed, a wall of planting, soft daylight, calm and orderly. |

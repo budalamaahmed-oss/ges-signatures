@@ -151,7 +151,7 @@ Each idea has one canonical presentation and is not repeated in the same form el
 
 - Intersection diagram and sticky philosophy story: homepage only. About presents the philosophy text-led (formula plus three pillars, no diagram).
 - Pinned horizontal lifecycle: homepage only. About presents the approach as a vertical timeline with a question per stage. Solutions presents its six responsibilities as a numbered two-column list.
-- Ecosystem flow and partner logo grid: Solutions only. Homepage presents the ecosystem as an orbit diagram, GES at the centre and seven partner domains around it, with a linked domain list.
+- Ecosystem flow and bordered partner tile grid: Solutions only. Homepage presents the partners as an open flow of marks with a role under each, Alemba leading, no tiles.
 - Meridian presence strip: homepage only. About uses a compact five-hub row.
 - Client marquee and testimonials: homepage only (one quote also on Projects).
 - Certification badges: About credentials (large) and under the Contact form (small).
@@ -161,7 +161,7 @@ Each idea has one canonical presentation and is not repeated in the same form el
 - Measured outcomes for the four case studies (each has a marked outcome block).
 - One or two client testimonials with a name and title.
 - Approval of the privacy notice draft.
-- A form backend or mailbox integration; the form opens a mail draft until then.
+- Hosting is Hostinger shared hosting. Both forms post to `contact.php`, which sends via PHP mail() from `website@globalges.net` to `info@globalges.net` and redirects to `contact-thanks.html`. That sender mailbox must exist in hPanel; if delivery is unreliable, switch the handler to SMTP with the mailbox credentials.
 
 ## QA record
 
