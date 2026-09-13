@@ -18,9 +18,9 @@ Source of truth for every later build step. Direction chosen: **Daylight Stone**
 Multi-page corporate site, built sequentially per the master brief: Home → About Us → Services → Solutions & Partners → Projects → Contact.
 
 - `styles.css` holds every token and component. Pages never restate tokens. `script.js` holds all motion and interaction and degrades to a still, readable page.
-- Pages: `index.html` (home), `about.html`, `services.html`, `solutions.html`, `projects.html`, `contact.html`. Nav marks the current page with `aria-current="page"`.
+- Pages: `index.html` (home), `about.html`, `services.html`, `solutions.html`, `projects.html`, `contact.html`, four case studies (`project-<slug>.html`: Eastern Health Cluster, Saudi Railway Company, Oromia Bank, Bustami & Saheb Group), `privacy.html` (draft for legal review), `404.html`. Plus `sitemap.xml`, `robots.txt`, `site.webmanifest`, favicons in `assets/icons/`, Open Graph image `assets/og-image.jpg`, certification badges in `assets/certs/`, partner marks in `assets/partners/`. Nav marks the current page with `aria-current="page"`.
 - Assets: `assets/logo.png`, `assets/logo-mark.png`, `assets/hero-consulting.jpg`, `assets/clients/` (real logos), `assets/GES-Company-Profile.pdf`, `assets/image-brief.md` (prompts for images still to make).
-- Homepage architecture (approved order): Hero → Introduction → People × Processes × Technology (sticky diagram) → Capabilities → Why GES → Transformation lifecycle → Technology ecosystem → Selected projects → Clients & trust → Regional presence → Final CTA → Footer.
+- Homepage architecture (revised after the reference review): Hero with the enlarged intersection diagram → who-we-are strip with the three facts → People × Processes × Technology (sticky diagram) → Capabilities with the Why GES rail → Transformation lifecycle (pinned, horizontal on desktop) → Statement band (one line, navy) → Technology ecosystem (connectors draw and pulse) → Selected projects (first image bleeds to the viewport edge; cards link to case studies) → Clients marquee → Regional presence → Contact form band → Footer. Introduction and Why GES sections were removed as redundant; their content lives in the strip and the rail.
 - Grounds in that order: ivory → cream strip → ivory → navy → white → stone → near-black → ivory → white → stone → navy → navy (with a gold rule between presence and CTA) → near-black footer.
 
 ## Audience & the one job
@@ -144,6 +144,13 @@ Avoid: the blue neon data-centre aisle from the current site, circuit boards, fu
 - Contact panel near the end of every page with a short form (name, organisation, email, what to discuss) that opens a mail draft until a backend exists.
 - Company profile download as the secondary action.
 - Proof before the ask: clients, partners, certifications appear above the contact panel.
+
+## Content still needed from GES
+
+- Measured outcomes for the four case studies (each has a marked outcome block).
+- One or two client testimonials with a name and title.
+- Approval of the privacy notice draft.
+- A form backend or mailbox integration; the form opens a mail draft until then.
 
 ## QA record
 

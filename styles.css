@@ -521,7 +521,7 @@ html.lenis,html.lenis body{height:auto}
 
 /* who we are: statement + body + facts */
 .who .shell{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,120px);align-items:start}
-.who .statement{position:sticky;top:120px}
+.who .statement{position:static}
 .who-body{display:grid;gap:var(--space-6)}
 .who-body p{max-width:var(--measure)}
 .who-body .intro-facts{margin-top:var(--space-4)}
@@ -790,3 +790,111 @@ html.lenis,html.lenis body{height:auto}
   .marquee-track li[aria-hidden="true"]{display:none}
 }
 @media (max-width:600px){.marquee-track li{width:160px;height:84px}.marquee-track img{max-height:40px;max-width:120px}}
+
+
+/* ============ 15. HOMEPAGE PASS 2 ============ */
+/* who-we-are strip */
+.who-strip{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--space-10);padding-block:var(--space-8);align-items:center}
+.who-line{font-size:var(--text-lede);line-height:1.45;max-width:46ch}
+.who-strip .intro-facts{border-top:0;padding-top:0}
+@media (max-width:900px){.who-strip{grid-template-columns:minmax(0,1fr);gap:var(--space-6)}}
+/* hero diagram, larger and interactive */
+.hero .shell{grid-template-columns:minmax(0,6fr) minmax(0,6fr)}
+.hero-copy{position:relative;z-index:1}
+.hero-diagram{margin:-4% -12% -4% -10%}
+.hero-diagram .ring{pointer-events:visibleStroke;cursor:default}
+.hero-diagram .ring:hover{stroke:var(--accent);opacity:1;stroke-width:1.8}
+@media (max-width:900px){.hero-diagram{margin:0;max-width:440px}}
+/* why rail in the capabilities head */
+.why-rail{display:grid;gap:var(--space-3);border-top:1px solid var(--line);padding-top:var(--space-6)}
+.why-rail li{display:grid;gap:2px;font-size:var(--text-small)}
+.why-rail b{font-family:var(--font-display);font-weight:500;font-size:1.05rem}
+.why-rail span{color:var(--ink-2)}
+/* statement band */
+.statement-band{position:relative;overflow:clip;padding-block:clamp(120px,22vh,240px)}
+.big-statement{font-family:var(--font-display);font-size:clamp(3rem,9vw,8.2rem);line-height:.96;letter-spacing:-.025em;max-width:11ch;text-wrap:balance;color:var(--ivory-on-navy);position:relative}
+.big-statement em{font-style:normal;color:var(--accent-lift)}
+/* project bleed to the viewport edge */
+.projects-grid > li:nth-child(1) .frame{margin-left:calc(-1 * (max(0px,(100vw - var(--max)) / 2) + var(--gutter)));width:calc(100% + max(0px,(100vw - var(--max)) / 2) + var(--gutter))}
+@media (max-width:900px){.projects-grid > li:nth-child(1) .frame{margin-left:0;width:100%}}
+/* masked heading reveals */
+@media (prefers-reduced-motion: no-preference){
+  .reveal.pre .section-head h2,.reveal.pre h2.statement,.reveal.pre .big-statement,.reveal.pre .philo-sticky h2{clip-path:inset(0 0 100% 0);transform:translateY(12%)}
+  .reveal.in .section-head h2,.reveal.in h2.statement,.reveal.in .big-statement,.reveal.in .philo-sticky h2{clip-path:inset(-2% 0 -8% 0);transform:none;transition:clip-path 900ms var(--ease) 120ms,transform 900ms var(--ease) 120ms}
+  /* ecosystem connectors draw, then a pulse travels */
+  .reveal.pre .eco-link::before{transform:scaleX(0);transform-origin:left}
+  .reveal.in .eco-link::before{transform:scaleX(1);transition:transform 900ms var(--ease) 500ms}
+  .eco-link .pulse{position:absolute;top:50%;left:0;width:8px;height:8px;border-radius:50%;background:var(--accent);transform:translate(-50%,-50%);opacity:0}
+  .reveal.in .eco-link .pulse{animation:pulse-x 3200ms var(--ease-in-out) 1500ms infinite}
+  @keyframes pulse-x{0%{left:0;opacity:0}12%{opacity:1}88%{opacity:1}100%{left:100%;opacity:0}}
+  @media (max-width:1000px){.eco-link .pulse{left:50%;top:0;transform:translate(-50%,-50%)}.reveal.in .eco-link .pulse{animation:pulse-y 3200ms var(--ease-in-out) 1500ms infinite}@keyframes pulse-y{0%{top:0;opacity:0}12%{opacity:1}88%{opacity:1}100%{top:100%;opacity:0}}}
+}
+/* pinned lifecycle (desktop, motion allowed) */
+.lifecycle .stages{position:relative}
+.lifecycle .stages::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--line-dark)}
+.lifecycle .stages::after{content:"";position:absolute;left:0;top:0;height:1px;width:calc(var(--progress) * 100%);background:var(--accent-lift);transition:width 120ms linear}
+.lifecycle .track::before,.lifecycle .track::after{display:none}
+@media (min-width:901px) and (prefers-reduced-motion: no-preference){
+  .lifecycle.pin{padding-block:0}
+  .lifecycle.pin .pin-wrap{height:320vh}
+  .lifecycle.pin .pin{position:sticky;top:0;min-height:100vh;display:grid;align-content:center;padding-block:var(--space-12);overflow:clip}
+  .lifecycle.pin .section-head{margin-bottom:var(--space-8)}
+  .lifecycle.pin .track{margin-top:var(--space-8)}
+  .lifecycle.pin .stages{display:flex;width:max-content;transform:translate3d(var(--shift,0px),0,0);will-change:transform}
+  .lifecycle.pin .stage{width:min(34vw,460px);padding:var(--space-10) var(--space-12) 0 0;flex:none}
+  .lifecycle.pin .stage h3{font-size:clamp(1.8rem,2.6vw,2.4rem)}
+  .lifecycle.pin .stage p{font-size:var(--text-body)}
+}
+
+/* ============ 16. INTERFACE FRAGMENT: service catalogue ============ */
+.fragment{margin-left:calc(56px + var(--space-6));background:var(--white);border:1px solid var(--line);padding:var(--space-6);display:grid;gap:var(--space-4);font-family:var(--font-body)}
+.fragment-head{display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-4);border-bottom:1px solid var(--line);padding-bottom:var(--space-3)}
+.fragment-head b{font-family:var(--font-display);font-weight:500;font-size:1.1rem}
+.fragment-head span{font-family:var(--font-mono);font-size:var(--text-label);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+.fragment table{width:100%;border-collapse:collapse;font-size:var(--text-small)}
+.fragment th{text-align:left;font-family:var(--font-mono);font-weight:400;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);padding:6px 0;border-bottom:1px solid var(--line)}
+.fragment td{padding:10px 0;border-bottom:1px solid var(--line);vertical-align:middle}
+.fragment td:last-child,.fragment th:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.fragment .pill{display:inline-block;font-family:var(--font-mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border:1px solid var(--line);border-radius:2px;color:var(--ink-2)}
+.fragment .pill.ok{border-color:oklch(70% 0.09 150);color:oklch(42% 0.09 150)}
+.fragment .pill.warn{border-color:var(--gold);color:oklch(52% 0.08 84)}
+.fragment .sla{display:inline-block;width:64px;height:4px;background:var(--surface-2);vertical-align:middle;margin-right:8px;position:relative;overflow:hidden}
+.fragment .sla i{position:absolute;left:0;top:0;bottom:0;background:var(--accent);width:var(--w,80%)}
+.fragment-foot{display:flex;justify-content:space-between;gap:var(--space-4);flex-wrap:wrap;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+.fragment-caption{margin-left:calc(56px + var(--space-6));font-family:var(--font-mono);font-size:var(--text-label);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+@media (max-width:760px){.fragment,.fragment-caption{margin-left:0}.fragment table th:nth-child(3),.fragment table td:nth-child(3){display:none}}
+
+/* ============ 17. CERTIFICATION BADGES ============ */
+.badges{display:flex;flex-wrap:wrap;gap:var(--space-4);align-items:center}
+.badges li{background:var(--white);border:1px solid var(--line);padding:var(--space-3) var(--space-4);display:grid;place-items:center;min-width:0}
+.badges img{height:56px;width:auto;max-width:160px;filter:grayscale(1);opacity:.8;transition:opacity var(--dur) var(--ease),filter var(--dur) var(--ease)}
+.badges li:hover img{filter:none;opacity:1}
+.badges.small img{height:40px}
+.trust-line{display:grid;gap:var(--space-4);border-top:1px solid var(--line);padding-top:var(--space-6)}
+.trust-line .label{color:var(--ink-2)}
+
+/* ============ 18. CASE STUDY ============ */
+.case .case-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,6vw,120px);align-items:start}
+.case-facts{position:sticky;top:104px;display:grid;gap:var(--space-4)}
+.case-facts dl{display:grid;gap:var(--space-3);border-top:1px solid var(--line);padding-top:var(--space-4)}
+.case-facts dt{font-family:var(--font-mono);font-size:var(--text-label);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.case-facts dd{margin:0 0 var(--space-2);font-size:var(--text-small)}
+.case-body{display:grid;gap:var(--space-12)}
+.case-body section{display:grid;gap:var(--space-4);padding-top:var(--space-8);border-top:1px solid var(--line)}
+.case-body section:first-child{border-top:0;padding-top:0}
+.case-body h2{font-size:clamp(1.7rem,3vw,2.4rem)}
+.case-body p{max-width:var(--measure);color:var(--ink-2)}
+.case-body ul.points{display:grid;gap:var(--space-3);max-width:var(--measure)}
+.case-body ul.points li{display:grid;grid-template-columns:20px minmax(0,1fr);gap:var(--space-3);font-size:var(--text-body)}
+.case-body ul.points li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);margin-top:9px}
+.case-outcome{background:var(--surface);padding:var(--space-8);border-left:2px solid var(--gold);display:grid;gap:var(--space-3)}
+.case-outcome .tbc{max-width:none}
+.case-related{margin-top:var(--space-16);padding-top:var(--space-10);border-top:1px solid var(--gold);display:grid;gap:var(--space-6)}
+.case-related ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-6)}
+.case-related a{display:grid;gap:var(--space-2);padding:var(--space-6);border:1px solid var(--line);background:var(--white);transition:background-color var(--dur) var(--ease)}
+.case-related a:hover{background:var(--bg)}
+.case-related a b{font-family:var(--font-display);font-weight:500;font-size:1.2rem}
+.case-related a span{font-size:var(--text-small);color:var(--ink-2)}
+@media (max-width:900px){.case .case-grid{grid-template-columns:minmax(0,1fr)}.case-facts{position:static}.case-related ul{grid-template-columns:minmax(0,1fr)}}
+.intro-facts li{min-width:0}
+@media (max-width:480px){.intro-facts{grid-template-columns:minmax(0,1fr);gap:var(--space-4)}}

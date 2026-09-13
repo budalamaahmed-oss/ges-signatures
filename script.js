@@ -64,15 +64,27 @@
       });
       if (stage > 0) setStage(stage);
     }
-    /* lifecycle progress line */
+    /* lifecycle: pinned horizontal sequence on desktop, progress line otherwise */
     if (lifecycle) {
-      var lr = lifecycle.getBoundingClientRect();
-      var start = vh * 0.85, end = vh * 0.25;
-      var p = (start - lr.top) / (lr.height - (start - end) + 0.0001);
-      p = Math.max(0, Math.min(1, p));
+      var wrap = lifecycle.querySelector('.pin-wrap');
+      var pinned = wrap && window.matchMedia('(min-width: 901px)').matches;
+      var p;
+      if (pinned) {
+        var wr = wrap.getBoundingClientRect();
+        p = Math.max(0, Math.min(1, (-wr.top) / (wr.height - vh + 0.0001)));
+        var track = lifecycle.querySelector('.stages');
+        var shell = lifecycle.querySelector('.shell');
+        var max = Math.max(0, track.scrollWidth - shell.clientWidth);
+        lifecycle.style.setProperty('--shift', (-max * p).toFixed(1) + 'px');
+      } else {
+        var lr = lifecycle.getBoundingClientRect();
+        var start = vh * 0.85, end = vh * 0.25;
+        p = Math.max(0, Math.min(1, (start - lr.top) / (lr.height - (start - end) + 0.0001)));
+        lifecycle.style.setProperty('--shift', '0px');
+      }
       lifecycle.style.setProperty('--progress', p.toFixed(3));
       var n = Math.round(p * stages.length);
-      stages.forEach(function (s, i) { s.classList.toggle('active', i < n); });
+      stages.forEach(function (s, i) { s.classList.toggle('active', i < Math.max(1, n)); });
     }
   };
   if (reduce) {
