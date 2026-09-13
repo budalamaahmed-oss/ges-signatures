@@ -342,6 +342,8 @@ button{font:inherit;color:inherit}
 .partner.dark .mark img{mix-blend-mode:normal;filter:none;opacity:.85}
 .partner.dark:hover .mark img{opacity:1}
 .partner.dark .role{color:var(--stone-on-navy)}
+.partner.tall .mark img{max-height:72px;max-width:80%}
+.partner.dark .mark img{max-height:60px;max-width:84%}
 .partner.lead{background:var(--white);grid-column:span 2;grid-row:span 2;padding:var(--space-8);min-height:0;grid-template-rows:auto minmax(0,1fr) auto;gap:var(--space-6)}
 .partner.lead:hover{background:var(--white)}
 .partner.lead .mark img{max-height:72px;max-width:60%;opacity:1;filter:none}
