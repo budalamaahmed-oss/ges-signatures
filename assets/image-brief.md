@@ -10,10 +10,10 @@ Every image follows the Assets plan in `design.md`: GES consultants with a clien
 
 | # | Slot | Filename | Ratio | Status |
 |---|---|---|---|---|
-| 1 | Hero | `assets/hero-consulting.jpg` | 4:5 crop of a 16:9 source | In place. Client's own photo. Regenerate only if a vertical is wanted. |
-| 2 | Reference · Banking, Saudi Arabia | `assets/ref-banking.jpg` | 3:2 | To generate |
-| 3 | Reference · Healthcare, Saudi Arabia | `assets/ref-healthcare.jpg` | 3:2 | To generate |
-| 4 | Reference · Transport, Oman | `assets/ref-transport.jpg` | 3:2 | To generate |
+| 1 | Introduction | `assets/hero-consulting-v.jpg` | 4:5 | Done. Client-generated. The earlier horizontal photo (`hero-consulting.jpg`) now sits in the Bustami & Saheb project slot. |
+| 2 | Reference · Banking, Saudi Arabia | `assets/ref-banking.jpg` | 3:2 | Done. Client-generated, 2026-09-13. |
+| 3 | Reference · Healthcare, Saudi Arabia | `assets/ref-healthcare.jpg` | 3:2 | Done. Client-generated, 2026-09-13. |
+| 4 | Reference · Transport, Oman | `assets/ref-transport.jpg` | 3:2 | Done. Client-generated, 2026-09-13. |
 
 ## Prompts
 
