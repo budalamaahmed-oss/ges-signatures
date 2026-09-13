@@ -135,6 +135,39 @@
     spy();
   }
 
+  /* ---- project filters: industry and capability, no scroll jump ---- */
+  var filterRoot = document.querySelector('[data-filters]');
+  if (filterRoot) {
+    var items = Array.prototype.slice.call(document.querySelectorAll('[data-filterable] > li'));
+    var groups = filterRoot.querySelectorAll('[data-filter-group]');
+    var countEl = filterRoot.querySelector('.filter-count');
+    var empty = document.querySelector('.projects-empty');
+    var state = {};
+    groups.forEach(function (g) { state[g.dataset.filterGroup] = 'all'; });
+    var apply = function () {
+      var visible = 0;
+      items.forEach(function (li) {
+        var ok = Object.keys(state).every(function (k) { return state[k] === 'all' || (li.dataset[k] || '').split(' ').indexOf(state[k]) !== -1; });
+        li.hidden = !ok;
+        if (ok) { li.dataset.pos = String(visible % 4); visible++; }
+      });
+      if (countEl) countEl.textContent = visible + ' of ' + items.length + ' engagements';
+      if (empty) empty.classList.toggle('show', visible === 0);
+      if (lenis) lenis.resize();
+    };
+    groups.forEach(function (g) {
+      g.querySelectorAll('.chip').forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          state[g.dataset.filterGroup] = btn.dataset.value;
+          g.querySelectorAll('.chip').forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
+          apply();
+        });
+      });
+    });
+    apply();
+  }
+
   /* ---- magnetic primary buttons: subtle, fine pointers only ---- */
   if (!reduce && finePointer) {
     document.querySelectorAll('.magnet').forEach(function (btn) {
