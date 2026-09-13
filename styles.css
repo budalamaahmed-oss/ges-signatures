@@ -407,15 +407,31 @@ button{font:inherit;color:inherit}
   .presence-list .time{font-family:var(--font-mono);color:var(--accent-lift);font-variant-numeric:tabular-nums}
 }
 
-/* final CTA */
+/* final CTA with contact form */
 .cta{overflow:clip}
 .cta .globe{left:-18vw;bottom:-32vw;width:min(70vw,800px);opacity:.16}
-.cta .shell{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,6vw,120px);align-items:end}
-.cta h2{font-size:clamp(2.6rem,6vw,5rem);max-width:12ch}
-.cta-side{display:grid;gap:var(--space-6);border-top:1px solid var(--line-dark);padding-top:var(--space-6)}
-.cta-side .places{display:flex;gap:var(--space-4);flex-wrap:wrap;font-family:var(--font-mono);font-size:var(--text-label);letter-spacing:.1em;text-transform:uppercase;color:var(--stone-on-navy)}
-.cta-actions{display:flex;gap:var(--space-3);flex-wrap:wrap}
-@media (max-width:900px){.cta .shell{grid-template-columns:minmax(0,1fr)}}
+.cta-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(40px,6vw,120px);align-items:start}
+.cta-copy{display:grid;gap:var(--space-6);position:sticky;top:120px}
+.cta-copy h2{font-size:clamp(2.4rem,4.6vw,3.8rem);max-width:14ch}
+.cta-meta{display:grid;gap:var(--space-3);font-size:var(--text-small);color:var(--stone-on-navy);border-top:1px solid var(--line-dark);padding-top:var(--space-6)}
+.cta-meta a{color:var(--ivory-on-navy)}
+.cta-meta .places{display:flex;gap:var(--space-4);flex-wrap:wrap;font-family:var(--font-mono);font-size:var(--text-label);letter-spacing:.1em;text-transform:uppercase;margin-top:var(--space-2)}
+.form{display:grid;gap:var(--space-4);background:var(--navy-2);padding:clamp(20px,3vw,40px);border:1px solid var(--line-dark)}
+.form .row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--space-4)}
+.field{display:grid;gap:var(--space-2);min-width:0}
+.field label{font-family:var(--font-mono);font-size:var(--text-label);letter-spacing:.1em;text-transform:uppercase;color:var(--stone-on-navy)}
+.field input,.field select,.field textarea{width:100%;background:var(--navy);color:var(--ivory-on-navy);border:1px solid var(--line-dark);border-radius:2px;padding:13px 14px;font-family:var(--font-body);font-size:1rem;line-height:1.3;transition:border-color var(--dur) var(--ease)}
+.field input:hover,.field select:hover,.field textarea:hover{border-color:var(--stone-on-navy)}
+.field select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8'><path d='M1 1l5 5 5-5' fill='none' stroke='%23c9c2b3' stroke-width='1.5'/></svg>");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.field textarea{min-height:130px;resize:vertical}
+.field input:focus-visible,.field select:focus-visible,.field textarea:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-color:var(--gold)}
+.form .actions{display:flex;gap:var(--space-4);align-items:center;flex-wrap:wrap;padding-top:var(--space-2)}
+.form .note{font-size:var(--text-small);color:var(--stone-on-navy)}
+@media (max-width:900px){
+  .cta-grid{grid-template-columns:minmax(0,1fr)}
+  .cta-copy{position:static}
+  .form .row{grid-template-columns:minmax(0,1fr)}
+}
 
 /* footer */
 .footer{background:var(--black);color:var(--stone-on-navy);border-top:1px solid var(--line-dark);padding-block:var(--space-12) var(--space-8)}

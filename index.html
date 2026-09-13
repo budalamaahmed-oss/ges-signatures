@@ -409,20 +409,48 @@
     <svg class="globe draw" viewBox="0 0 400 400" aria-hidden="true"><use href="#globe"/></svg>
     <div class="shell">
       <hr class="rule" style="margin-bottom:var(--space-section)">
-      <div class="shell" style="padding:0;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,6vw,120px);align-items:end">
-        <div>
-          <p class="label" style="margin-bottom:24px">Start a conversation</p>
+      <div class="cta-grid">
+        <div class="cta-copy">
+          <p class="label">Start a conversation</p>
           <h2 id="cta-h">Bring your priorities. Let's shape the path.</h2>
-        </div>
-        <div class="cta-side">
-          <p class="lede">Tell us about the business challenge, the technology environment or the change you are planning.</p>
-          <p class="formula">People <b>×</b> Process <b>×</b> Technology</p>
-          <div class="cta-actions">
-            <a class="btn btn-primary magnet" href="contact.html">Contact GES <span class="arrow">→</span></a>
-            <a class="btn btn-secondary" href="mailto:info@globalges.net">info@globalges.net</a>
+          <p class="lede">Tell us about the business challenge, the technology environment or the change you are planning, and we'll connect you with the right GES expert.</p>
+          <div class="cta-meta">
+            <p>Email <a class="link" href="mailto:info@globalges.net">info@globalges.net</a></p>
+            <p><a class="link" href="assets/GES-Company-Profile.pdf">Download the company profile (PDF)</a></p>
+            <p class="places"><span>London</span><span>Türkiye</span><span>KSA</span><span>Bahrain</span><span>UAE</span></p>
           </div>
-          <p class="places"><span>London</span><span>Türkiye</span><span>KSA</span><span>Bahrain</span><span>UAE</span></p>
         </div>
+        <form class="form" id="contactForm" action="mailto:info@globalges.net" method="get" enctype="text/plain">
+          <div class="row">
+            <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+            <div class="field"><label for="f-company">Company</label><input id="f-company" name="company" type="text" autocomplete="organization"></div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="f-email">Business email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+            <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="f-country">Country</label><input id="f-country" name="country" type="text" autocomplete="country-name"></div>
+            <div class="field"><label for="f-topic">Area of interest</label>
+              <select id="f-topic" name="area_of_interest">
+                <option>Consulting &amp; digital transformation</option>
+                <option>IT service management</option>
+                <option>Cybersecurity &amp; information security</option>
+                <option>Governance, risk &amp; compliance</option>
+                <option>Data management &amp; governance</option>
+                <option>Enterprise technology solutions</option>
+                <option>Training &amp; capability development</option>
+                <option>Partnership</option>
+                <option>General enquiry</option>
+              </select>
+            </div>
+          </div>
+          <div class="field"><label for="f-msg">Message</label><textarea id="f-msg" name="body"></textarea></div>
+          <div class="actions">
+            <button class="btn btn-primary magnet" type="submit">Send enquiry <span class="arrow">→</span></button>
+            <p class="note">Opens a draft to info@globalges.net until the form has a backend.</p>
+          </div>
+        </form>
       </div>
     </div>
   </section>
