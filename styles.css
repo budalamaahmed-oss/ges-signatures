@@ -898,3 +898,26 @@ html.lenis,html.lenis body{height:auto}
 @media (max-width:900px){.case .case-grid{grid-template-columns:minmax(0,1fr)}.case-facts{position:static}.case-related ul{grid-template-columns:minmax(0,1fr)}}
 .intro-facts li{min-width:0}
 @media (max-width:480px){.intro-facts{grid-template-columns:minmax(0,1fr);gap:var(--space-4)}}
+
+/* ============ 19. WHO WE ARE BAND + TESTIMONIALS ============ */
+.who-band{background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding-block:var(--space-section)}
+.who-band .shell{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,5fr) minmax(0,3fr);gap:clamp(32px,5vw,80px);align-items:start}
+.who-band .statement{max-width:14ch}
+.who-band .col{display:grid;gap:var(--space-6)}
+.who-band .col p{max-width:var(--measure)}
+.who-band .intro-facts{margin-top:var(--space-2)}
+.who-band .frame{aspect-ratio:4/5}
+@media (max-width:1000px){.who-band .shell{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.who-band .frame{grid-column:1/-1;aspect-ratio:16/10}}
+@media (max-width:700px){.who-band .shell{grid-template-columns:minmax(0,1fr)}}
+.testimonials{overflow:clip}
+.quotes{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,6vw,96px);align-items:start}
+.quote{display:grid;gap:var(--space-6);position:relative;padding-top:var(--space-6);border-top:1px solid var(--gold)}
+.quote blockquote{margin:0;font-family:var(--font-display);font-size:clamp(1.5rem,2.6vw,2.3rem);line-height:1.25;letter-spacing:-.01em;text-wrap:balance}
+.quote.small blockquote{font-size:clamp(1.2rem,1.8vw,1.5rem)}
+.quote.small{margin-top:var(--space-16)}
+.quote figcaption{display:grid;gap:2px;font-size:var(--text-small)}
+.quote figcaption b{font-weight:700}
+.quote figcaption span{color:var(--ink-2)}
+.quote .mark{font-family:var(--font-display);font-size:5rem;line-height:.6;color:var(--accent);opacity:.35;position:absolute;top:var(--space-8);right:0}
+.placeholder-tag{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--placeholder-ink);border:1px dashed var(--placeholder-ink);padding:4px 8px;justify-self:start}
+@media (max-width:900px){.quotes{grid-template-columns:minmax(0,1fr)}.quote.small{margin-top:0}}
