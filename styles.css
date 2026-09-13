@@ -673,3 +673,26 @@ html.lenis,html.lenis body{height:auto}
   .projects-all > li[data-pos]{grid-column:auto;margin-top:0}
   .projects-all > li[data-pos] .frame{aspect-ratio:3/2}
 }
+
+/* ============ 12. CONTACT ============ */
+.contact-page .shell{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(40px,6vw,120px);align-items:start}
+.contact-aside{display:grid;gap:var(--space-8);position:sticky;top:120px}
+.contact-aside .block{display:grid;gap:var(--space-3);padding-top:var(--space-6);border-top:1px solid var(--line)}
+.contact-aside .block:first-child{border-top:0;padding-top:0}
+.contact-aside .email{font-family:var(--font-display);font-size:clamp(1.4rem,2.2vw,1.9rem);line-height:1.2}
+.hub-list{display:grid;gap:0}
+.hub-list li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--space-4);padding-block:var(--space-3);border-bottom:1px solid var(--line);align-items:baseline;font-size:var(--text-small)}
+.hub-list .place{color:var(--ink-2)}
+.hub-list .time{font-family:var(--font-mono);color:var(--accent);font-variant-numeric:tabular-nums}
+.form.light{background:var(--white);border-color:var(--line)}
+.form.light .field label{color:var(--ink-2)}
+.form.light .field input,.form.light .field select,.form.light .field textarea{background-color:var(--bg);color:var(--ink);border-color:var(--line)}
+.form.light .field input:hover,.form.light .field select:hover,.form.light .field textarea:hover{border-color:var(--ink-2)}
+.form.light .field select{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8'><path d='M1 1l5 5 5-5' fill='none' stroke='%23334' stroke-width='1.5'/></svg>")}
+.form.light .field input:focus-visible,.form.light .field select:focus-visible,.form.light .field textarea:focus-visible{outline-color:var(--accent);border-color:var(--accent)}
+.form.light .note{color:var(--ink-2)}
+.next-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-8);border-top:1px solid var(--line);padding-top:var(--space-8);margin-top:var(--space-12)}
+.next-steps li{display:grid;gap:var(--space-2)}
+.next-steps h3{font-size:1.25rem}
+.next-steps p{font-size:var(--text-small);color:var(--ink-2)}
+@media (max-width:900px){.contact-page .shell{grid-template-columns:minmax(0,1fr)}.contact-aside{position:static}.next-steps{grid-template-columns:minmax(0,1fr)}}
