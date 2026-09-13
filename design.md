@@ -145,6 +145,17 @@ Avoid: the blue neon data-centre aisle from the current site, circuit boards, fu
 - Company profile download as the secondary action.
 - Proof before the ask: clients, partners, certifications appear above the contact panel.
 
+## One form per page (no repeated sections)
+
+Each idea has one canonical presentation and is not repeated in the same form elsewhere:
+
+- Intersection diagram and sticky philosophy story: homepage only. About presents the philosophy text-led (formula plus three pillars, no diagram).
+- Pinned horizontal lifecycle: homepage only. About presents the approach as a vertical timeline with a question per stage. Solutions presents its six responsibilities as a numbered two-column list.
+- Ecosystem flow and partner logo grid: Solutions only. Homepage presents the ecosystem as an orbit diagram, GES at the centre and seven partner domains around it, with a linked domain list.
+- Meridian presence strip: homepage only. About uses a compact five-hub row.
+- Client marquee and testimonials: homepage only (one quote also on Projects).
+- Certification badges: About credentials (large) and under the Contact form (small).
+
 ## Content still needed from GES
 
 - Measured outcomes for the four case studies (each has a marked outcome block).
