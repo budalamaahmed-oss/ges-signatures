@@ -9,63 +9,599 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500&family=Atkinson+Hyperlegible:wght@400;700&family=Space+Mono:wght@400;700&display=swap">
+<script>document.documentElement.classList.add('js');</script>
 <style>
-/* Global GES · Step 1 · Direction: Daylight Stone · display: IBM Plex Serif · accent hue 256 */
+/* Global GES · Step 2 · Direction: Daylight Stone · display: IBM Plex Serif · accent hue 256 · motion: smooth & premium */
 :root{
   --bg: oklch(96% 0.012 90);
+  --surface: oklch(91.5% 0.015 88);
   --ink: oklch(24% 0.04 250);
+  --ink-2: oklch(44% 0.035 250);
+  --accent: oklch(50% 0.135 256);
+  --accent-2: oklch(44% 0.135 256);
+  --navy: oklch(22% 0.05 250);
+  --navy-2: oklch(28% 0.055 248);
+  --gold: oklch(73% 0.072 84);
+  --line: oklch(84% 0.018 90);
+  --line-dark: oklch(36% 0.045 248);
+  --ivory-on-navy: oklch(95% 0.012 90);
+  --stone-on-navy: oklch(74% 0.022 85);
+  --placeholder: oklch(88% 0.014 88);
+  --placeholder-ink: oklch(52% 0.03 250);
+  --focus: oklch(50% 0.135 256);
+
   --font-display: "IBM Plex Serif", Georgia, "Times New Roman", serif;
   --font-body: "Atkinson Hyperlegible", "Segoe UI", Arial, sans-serif;
   --font-mono: "Space Mono", ui-monospace, "Courier New", monospace;
+
   --text-display: clamp(2.6rem, 6.5vw, 5.2rem);
+  --text-h2: clamp(1.9rem, 3.4vw, 2.8rem);
+  --text-h3: 1.5rem;
   --text-lede: clamp(1.125rem, 1.6vw, 1.35rem);
-  --space-4: 16px; --space-6: 24px; --space-8: 32px; --space-12: 96px;
+  --text-body: 1.0625rem;
+  --text-small: .9rem;
+  --text-label: .75rem;
+
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-6: 24px;
+  --space-8: 32px; --space-10: 48px; --space-12: 96px;
+  --space-section: clamp(72px, 10vw, 144px);
+  --gutter: clamp(16px, 4vw, 48px);
+  --max: 1240px;
+
+  --ease: cubic-bezier(.2,.7,.2,1);
+  --dur: 160ms;
 }
+
+/* ---------- base ---------- */
 html,body{overflow-x:clip}
+html{scroll-behavior:auto}
 body{
-  margin:0;
-  background:var(--bg);
-  color:var(--ink);
-  font-family:var(--font-body);
-  font-size:1.0625rem;
-  line-height:1.55;
-  padding-inline:clamp(16px,4vw,48px);
-  padding-block:var(--space-8) var(--space-12);
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--font-body);font-size:var(--text-body);line-height:1.55;
   -webkit-font-smoothing:antialiased;
 }
-main{max-width:1240px;margin:0 auto;display:grid;gap:clamp(48px,8vw,112px)}
-.brand{display:flex;align-items:center;gap:var(--space-4)}
-.brand img{height:56px;width:auto;display:block}
-.hero{display:grid;gap:var(--space-6);max-width:22ch}
-h1{
-  font-family:var(--font-display);
-  font-weight:400;
-  font-style:normal;
-  font-size:var(--text-display);
-  line-height:1.02;
-  letter-spacing:-.01em;
-  margin:0;
-  text-wrap:balance;
-  overflow-wrap:anywhere;
-  min-width:0;
+main{display:block}
+h1,h2,h3{font-family:var(--font-display);font-weight:400;font-style:normal;margin:0;text-wrap:balance;overflow-wrap:anywhere;min-width:0}
+h1{font-size:var(--text-display);line-height:1.02;letter-spacing:-.01em}
+h2{font-size:var(--text-h2);line-height:1.1}
+h3{font-size:var(--text-h3);font-weight:500;line-height:1.2}
+p{margin:0}
+a{color:var(--ink);text-decoration:none}
+ul,ol{margin:0;padding:0;list-style:none}
+img{max-width:100%;height:auto;display:block}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+.shell{max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter)}
+.skip{position:absolute;left:var(--gutter);top:-100px;background:var(--navy);color:var(--ivory-on-navy);padding:var(--space-2) var(--space-4);font-family:var(--font-mono);font-size:var(--text-small);z-index:100}
+.skip:focus{top:var(--space-4)}
+
+.label{font-family:var(--font-mono);font-size:var(--text-label);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.lede{font-size:var(--text-lede);line-height:1.45;max-width:36ch}
+.body{max-width:62ch}
+.muted{color:var(--ink-2)}
+.formula{font-family:var(--font-mono);font-size:.9rem;letter-spacing:.06em;white-space:nowrap}
+.formula b{color:var(--accent);font-weight:400}
+.rule{height:1px;background:var(--gold);border:0;margin:0}
+
+/* ---------- placeholders (Step 2 only) ---------- */
+.ph{
+  background:var(--placeholder);
+  border:1px dashed var(--placeholder-ink);
+  color:var(--placeholder-ink);
+  font-family:var(--font-mono);font-size:var(--text-label);letter-spacing:.08em;text-transform:uppercase;
+  display:grid;place-items:center;text-align:center;padding:var(--space-4);
+  min-width:0;max-width:100%;
 }
-.lede{font-size:var(--text-lede);line-height:1.45;margin:0;max-width:34ch}
-.formula{font-family:var(--font-mono);font-size:.85rem;letter-spacing:.06em;margin:0}
-a{color:var(--ink)}
-:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-@media (prefers-reduced-motion: reduce){*{transition:none !important;animation:none !important}}
+.ph span{max-width:28ch;line-height:1.5}
+.ph-copy{color:var(--placeholder-ink)}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:var(--space-2);
+  font-family:var(--font-mono);font-size:.85rem;letter-spacing:.02em;line-height:1;
+  padding:14px 20px;border-radius:2px;border:1px solid transparent;
+  white-space:nowrap;cursor:pointer;
+  transition:background-color var(--dur) var(--ease),color var(--dur) var(--ease),border-color var(--dur) var(--ease),transform var(--dur) var(--ease);
+}
+.btn-primary{background:var(--accent);color:var(--ivory-on-navy);border-color:var(--accent)}
+.btn-primary:hover{background:var(--accent-2);border-color:var(--accent-2)}
+.btn-primary:active{transform:translateY(1px)}
+.btn-secondary{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn-secondary:hover{background:var(--surface)}
+.btn-secondary:active{transform:translateY(1px)}
+.on-navy .btn-secondary{color:var(--ivory-on-navy);border-color:var(--ivory-on-navy)}
+.on-navy .btn-secondary:hover{background:var(--navy-2)}
+.btn[aria-disabled="true"]{background:var(--surface);color:var(--ink-2);border-color:var(--surface);cursor:not-allowed}
+.link{position:relative;color:var(--ink);text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:1px;text-underline-offset:4px;transition:text-decoration-thickness var(--dur) var(--ease)}
+.link:hover{text-decoration-thickness:2px}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav .shell{display:flex;align-items:center;justify-content:space-between;gap:var(--space-6);min-height:72px}
+.nav .brand img{height:40px;width:auto}
+.nav-links{display:flex;gap:var(--space-8);align-items:center}
+.nav-links a{font-family:var(--font-body);font-size:var(--text-small);position:relative;padding-block:var(--space-2)}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--accent);transition:right var(--dur) var(--ease)}
+.nav-links a:hover::after{right:0}
+.nav-actions{display:flex;gap:var(--space-3);align-items:center}
+.nav-toggle{display:none;background:none;border:1px solid var(--ink);border-radius:2px;padding:10px 12px;font-family:var(--font-mono);font-size:.8rem;color:var(--ink);cursor:pointer}
+@media (max-width:900px){
+  .nav-links{display:none;position:absolute;left:0;right:0;top:100%;background:var(--bg);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0;padding:var(--space-2) var(--gutter) var(--space-4)}
+  .nav-links a{padding-block:var(--space-3);border-bottom:1px solid var(--line)}
+  .nav.open .nav-links{display:flex}
+  .nav-toggle{display:inline-block}
+  .nav-actions .btn-secondary{display:none}
+}
+
+/* ---------- hero ---------- */
+.hero{padding-block:clamp(48px,7vw,96px) var(--space-section)}
+.hero .shell{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,5vw,72px);align-items:end}
+.hero-copy{display:grid;gap:var(--space-6);min-width:0}
+.hero-copy h1{max-width:13ch}
+.hero-copy .lede{max-width:34ch}
+.hero-actions{display:flex;gap:var(--space-3);flex-wrap:wrap;align-items:center}
+.hero-meta{display:flex;gap:var(--space-6);flex-wrap:wrap;align-items:baseline}
+.hero-meta a{font-family:var(--font-mono);font-size:var(--text-small)}
+.hero-media{position:relative;min-width:0}
+.hero-media .ph{aspect-ratio:4/5;width:100%}
+.hero-media-inner{will-change:transform}
+@media (max-width:760px){
+  .hero .shell{grid-template-columns:minmax(0,1fr)}
+  .hero-copy h1{max-width:none}
+  .hero-media .ph{aspect-ratio:4/3}
+}
+
+/* ---------- sections ---------- */
+.section{padding-block:var(--space-section)}
+.section-head{display:grid;gap:var(--space-3);max-width:30ch;margin-bottom:var(--space-10)}
+.section-head .rule{width:96px;margin-top:var(--space-2)}
+.section + .section{border-top:1px solid var(--line)}
+
+/* the problem: formula moment */
+.problem .shell{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,96px);align-items:start}
+.problem .body{font-size:var(--text-lede);line-height:1.45}
+.formula-big{font-family:var(--font-mono);font-size:clamp(1.4rem,3.6vw,2.6rem);line-height:1.25;letter-spacing:-.01em;display:grid;gap:var(--space-2)}
+.formula-big b{color:var(--accent);font-weight:400}
+.three{display:grid;gap:0;border-top:1px solid var(--line);margin-top:var(--space-8)}
+.three li{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:var(--space-6);padding-block:var(--space-6);border-bottom:1px solid var(--line);align-items:baseline}
+.three h3{font-size:var(--text-h3)}
+.three p{color:var(--ink-2)}
+@media (max-width:760px){
+  .problem .shell{grid-template-columns:minmax(0,1fr)}
+  .three li{grid-template-columns:minmax(0,1fr);gap:var(--space-2)}
+}
+
+/* how it works: the journey (ordinal, so numbered) */
+.journey{counter-reset:step}
+.journey ol{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.journey li{counter-increment:step;padding:var(--space-6);border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;gap:var(--space-3);align-content:start;min-width:0}
+.journey li::before{content:"0" counter(step);font-family:var(--font-mono);font-size:var(--text-label);letter-spacing:.12em;color:var(--accent)}
+.journey h3{font-size:1.35rem}
+.journey p{color:var(--ink-2);font-size:var(--text-small)}
+@media (max-width:900px){.journey ol{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:540px){.journey ol{grid-template-columns:minmax(0,1fr)}}
+
+/* capabilities: rows, not cards */
+.caps .shell{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,5vw,96px);align-items:start}
+.caps .section-head{margin-bottom:0;position:sticky;top:96px}
+.cap-list{border-top:1px solid var(--line)}
+.cap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--space-6);padding-block:var(--space-8);border-bottom:1px solid var(--line);min-width:0}
+.cap h3{font-size:1.6rem}
+.cap .tags{font-family:var(--font-mono);font-size:var(--text-label);letter-spacing:.06em;color:var(--ink-2);margin-top:var(--space-3);line-height:1.8}
+.cap p{color:var(--ink-2)}
+.cap .claim{color:var(--ink);font-family:var(--font-display);font-size:1.15rem;margin-bottom:var(--space-3)}
+.caps-more{margin-top:var(--space-8)}
+@media (max-width:900px){
+  .caps .shell{grid-template-columns:minmax(0,1fr)}
+  .caps .section-head{position:static;margin-bottom:var(--space-6)}
+  .cap{grid-template-columns:minmax(0,1fr);gap:var(--space-3)}
+}
+
+/* proof */
+.proof .facts{display:flex;gap:var(--space-8);flex-wrap:wrap;font-family:var(--font-mono);font-size:var(--text-small);color:var(--ink-2);margin-bottom:var(--space-10);font-variant-numeric:tabular-nums}
+.proof .facts b{color:var(--ink);font-weight:400}
+.refs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-6);margin-bottom:var(--space-10)}
+.ref{display:grid;gap:var(--space-3);align-content:start;min-width:0}
+.ref .ph{aspect-ratio:3/2}
+.ref:nth-child(2){margin-top:var(--space-10)}
+.ref h3{font-size:1.25rem}
+.logos{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:var(--space-2);background:var(--surface);padding:var(--space-2)}
+.logos .ph{aspect-ratio:5/3;border-style:solid;border-color:var(--surface);background:var(--bg);font-size:.65rem}
+@media (max-width:900px){
+  .refs{grid-template-columns:minmax(0,1fr)}
+  .ref:nth-child(2){margin-top:0}
+  .logos{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+
+/* credentials */
+.creds .shell{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,96px)}
+.cred-group{display:grid;gap:var(--space-4);align-content:start}
+.cred-group .label{padding-bottom:var(--space-2);border-bottom:1px solid var(--gold)}
+.cred-list li{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:var(--space-4);padding-block:var(--space-3);border-bottom:1px solid var(--line);font-size:var(--text-small)}
+.cred-list li b{font-weight:700}
+.cred-list li span{color:var(--ink-2)}
+.partners{margin-top:var(--space-10);display:grid;gap:var(--space-4)}
+.partner-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--space-2)}
+.partner-row .ph{aspect-ratio:5/3;font-size:.65rem}
+@media (max-width:900px){
+  .creds .shell{grid-template-columns:minmax(0,1fr)}
+  .partner-row{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .cred-list li{grid-template-columns:minmax(0,1fr);gap:var(--space-1)}
+}
+
+/* contact band */
+.contact{background:var(--navy);color:var(--ivory-on-navy);padding-block:var(--space-section)}
+.contact .shell{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(32px,5vw,96px);align-items:start}
+.contact .label{color:var(--stone-on-navy)}
+.contact .lede{color:var(--stone-on-navy)}
+.contact-copy{display:grid;gap:var(--space-6);max-width:26ch}
+.contact-copy .formula{color:var(--ivory-on-navy)}
+.contact-meta{display:grid;gap:var(--space-4);font-size:var(--text-small);color:var(--stone-on-navy);border-top:1px solid var(--line-dark);padding-top:var(--space-6)}
+.contact-meta a{color:var(--ivory-on-navy)}
+.contact-meta .places{display:flex;gap:var(--space-4);flex-wrap:wrap;font-family:var(--font-mono);font-size:var(--text-label);letter-spacing:.08em;text-transform:uppercase}
+.form{display:grid;gap:var(--space-4)}
+.form .row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--space-4)}
+.field{display:grid;gap:var(--space-2);min-width:0}
+.field label{font-family:var(--font-mono);font-size:var(--text-label);letter-spacing:.08em;text-transform:uppercase;color:var(--stone-on-navy)}
+.field input,.field select,.field textarea{
+  width:100%;box-sizing:border-box;background:var(--navy-2);color:var(--ivory-on-navy);
+  border:1px solid var(--line-dark);border-radius:2px;padding:12px 14px;
+  font-family:var(--font-body);font-size:1rem;line-height:1.3;
+}
+.field select{appearance:none}
+.field textarea{min-height:120px;resize:vertical}
+.field input:focus-visible,.field select:focus-visible,.field textarea:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.form .actions{display:flex;gap:var(--space-4);align-items:center;flex-wrap:wrap}
+.form .note{font-size:var(--text-small);color:var(--stone-on-navy)}
+@media (max-width:900px){
+  .contact .shell{grid-template-columns:minmax(0,1fr)}
+  .contact-copy{max-width:none}
+  .form .row{grid-template-columns:minmax(0,1fr)}
+}
+
+/* footer */
+.footer{background:var(--navy);color:var(--stone-on-navy);border-top:1px solid var(--line-dark);padding-block:var(--space-8)}
+.footer .shell{display:flex;justify-content:space-between;gap:var(--space-6);flex-wrap:wrap;align-items:center;font-size:var(--text-small)}
+.footer .wordmark{font-family:var(--font-display);font-size:1.25rem;color:var(--ivory-on-navy)}
+.footer a{color:var(--ivory-on-navy)}
+.footer .places{font-family:var(--font-mono);font-size:var(--text-label);letter-spacing:.08em;text-transform:uppercase}
+
+/* ---------- motion: smooth & premium ---------- */
+/* Budget: (1) hero — load sequence + soft parallax; (2) section reveals. Inertia scroll is structural. */
+@media (prefers-reduced-motion: no-preference){
+  .js .hero-copy > *{animation:rise 720ms var(--ease) both}
+  .js .hero-copy > :nth-child(1){animation-delay:60ms}
+  .js .hero-copy > :nth-child(2){animation-delay:140ms}
+  .js .hero-copy > :nth-child(3){animation-delay:240ms}
+  .js .hero-copy > :nth-child(4){animation-delay:320ms}
+  .js .hero-copy > :nth-child(5){animation-delay:400ms}
+  .js .hero-media{animation:settle 1100ms var(--ease) both;animation-delay:120ms}
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  @keyframes settle{from{opacity:0;transform:scale(1.03)}to{opacity:1;transform:none}}
+  /* reveals: the .pre class is only added by JS to elements below the fold, so nothing is hidden at rest */
+  .reveal.pre{opacity:0;transform:translateY(22px)}
+  .reveal.in{opacity:1;transform:none;transition:opacity 700ms var(--ease),transform 700ms var(--ease)}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  html.lenis{scroll-behavior:auto}
+}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto !important}
+.lenis.lenis-stopped{overflow:hidden}
 </style>
 </head>
 <body>
-<main>
-  <header class="brand">
-    <img src="assets/logo.png" alt="GES, Global Experts Services" width="1160" height="675">
-  </header>
-  <section class="hero">
-    <h1>Technology alone is never the answer.</h1>
-    <p class="lede">Global GES works alongside government and enterprise teams across the Middle East to bring people, process and technology into one accountable programme. Transformation that is practical, end to end, and owned by the people who have to live with it.</p>
-    <p class="formula">People × Process × Technology</p>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="nav">
+  <div class="shell">
+    <a class="brand" href="#top" aria-label="Global GES, home"><img src="assets/logo.png" alt="GES, Global Experts Services" width="1160" height="675"></a>
+    <nav class="nav-links" id="navLinks" aria-label="Primary">
+      <a href="#approach">Approach</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#clients">Clients</a>
+      <a href="#credentials">Credentials</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn btn-secondary" href="assets/GES-Company-Profile.pdf">Company profile</a>
+      <a class="btn btn-primary" href="#contact">Contact GES</a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="shell">
+      <div class="hero-copy">
+        <p class="label">Global GES · Consulting · Technology · Delivery</p>
+        <h1>Technology alone is never the answer.</h1>
+        <p class="lede">Global GES works alongside government and enterprise teams across the Middle East to bring people, process and technology into one accountable programme. Transformation that is practical, end to end, and owned by the people who have to live with it.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">Discuss a requirement</a>
+          <a class="btn btn-secondary" href="assets/GES-Company-Profile.pdf">Download the profile</a>
+        </div>
+        <div class="hero-meta">
+          <p class="formula">People <b>×</b> Process <b>×</b> Technology</p>
+          <a class="link" href="mailto:info@globalges.net">info@globalges.net</a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <div class="hero-media-inner" id="heroParallax">
+          <div class="ph" role="img" aria-label="Placeholder: hero image"><span>hero — GES team with a client's leadership around a table, stone and glass, soft daylight</span></div>
+        </div>
+      </div>
+    </div>
   </section>
+
+  <!-- THE PROBLEM · formula moment -->
+  <section class="section problem reveal" id="approach">
+    <div class="shell">
+      <div>
+        <div class="section-head">
+          <p class="label">Our philosophy</p>
+          <h2>Technology is not the whole answer.</h2>
+          <hr class="rule">
+        </div>
+        <p class="body">Sustainable transformation depends on people, processes and technology working together. Each is essential. None works in isolation.</p>
+      </div>
+      <div>
+        <p class="formula-big"><span>People</span><span><b>×</b> Process</span><span><b>×</b> Technology</span></p>
+        <ol class="three">
+          <li><h3>People</h3><p>The skills, ownership and confidence to make change last. Clear responsibilities, stakeholder involvement and practical training help teams understand the change and take ownership of it.</p></li>
+          <li><h3>Processes</h3><p>The structure that turns business priorities into consistent delivery. Governance, service management and consistent delivery practices connect individual activities to organisational priorities.</p></li>
+          <li><h3>Technology</h3><p>The systems and infrastructure that support the way you work. Architecture, platforms and infrastructure should support how an organisation works, integrates, protects its information and evolves.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS · the delivery journey -->
+  <section class="section journey reveal" id="how">
+    <div class="shell">
+      <div class="section-head">
+        <p class="label">The delivery journey</p>
+        <h2>One continuous path. Shared accountability.</h2>
+        <hr class="rule">
+        <p class="muted">Every engagement has a different starting point. The delivery path connects assessment, planning and execution with the support needed afterwards.</p>
+      </div>
+      <ol>
+        <li><h3>Assess</h3><p>Understand before you act. Review the current environment, business requirements, risks and opportunities for improvement.</p></li>
+        <li><h3>Strategise</h3><p>Agree the direction. Align technology priorities with business objectives and define the roadmap for change.</p></li>
+        <li><h3>Design</h3><p>Connect the details. Develop the architecture, processes and implementation plans that turn direction into a workable solution.</p></li>
+        <li><h3>Implement</h3><p>Put the plan into practice. Coordinate delivery, integration and project activities around the agreed scope.</p></li>
+        <li><h3>Operate</h3><p>Support the working environment. Provide the operational support, maintenance and monitoring relevant to the engagement.</p></li>
+        <li><h3>Optimise</h3><p>Keep improving. Review performance and changing needs to identify where the environment can be refined.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="section caps reveal" id="capabilities">
+    <div class="shell">
+      <div class="section-head">
+        <p class="label">Our capabilities</p>
+        <h2>Connected expertise. From direction to delivery.</h2>
+        <hr class="rule">
+        <p class="muted">Explore the capabilities that connect your business priorities with your technology environment.</p>
+        <p class="caps-more"><a class="link" href="#services-page">Explore the full service portfolio</a> <span class="ph-copy label">(services page — later step)</span></p>
+      </div>
+      <ul class="cap-list">
+        <li class="cap">
+          <div><h3>Consulting &amp; Transformation</h3><p class="tags">Project Management Consultation · IT Strategy &amp; Planning · Enterprise Architecture</p></div>
+          <div><p class="claim">Set a clear direction for change.</p><p>Define priorities, plan delivery and align technology decisions with your organisation's needs.</p></div>
+        </li>
+        <li class="cap">
+          <div><h3>Security &amp; Governance</h3><p class="tags">Cybersecurity Consultation · Information Security · Governance, Risk &amp; Compliance</p></div>
+          <div><p class="claim">Build confidence into your operations.</p><p>Assess risks, strengthen controls and establish the frameworks that protect critical information and operations.</p></div>
+        </li>
+        <li class="cap">
+          <div><h3>Data &amp; Enterprise Technology</h3><p class="tags">Data Management · Cloud Services · Infrastructure &amp; Data Centres</p></div>
+          <div><p class="claim">Connect the digital foundation.</p><p>Bring the platforms, infrastructure and data capabilities together to support enterprise operations.</p></div>
+        </li>
+        <li class="cap">
+          <div><h3>Service Management &amp; Operations</h3><p class="tags">IT Service Management · Managed Services · Training</p></div>
+          <div><p class="claim">Make technology work every day.</p><p>Connect service delivery, ongoing support and capability development to sustain the working environment.</p></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PROOF -->
+  <section class="section proof reveal" id="clients">
+    <div class="shell">
+      <div class="section-head">
+        <p class="label">Selected references</p>
+        <h2>Enterprise environments. Real-world responsibility.</h2>
+        <hr class="rule">
+      </div>
+      <p class="facts"><span><b>14+</b> years of delivery</span><span><b>10</b> specialised practices</span><span><b>24/7</b> managed operations</span><span><b>5</b> regional hubs</span></p>
+      <ul class="refs">
+        <li class="ref">
+          <div class="ph" role="img" aria-label="Placeholder: reference image"><span>reference — Alinma Bank engagement, banking floor or head office interior</span></div>
+          <p class="label">Banking &amp; Finance · Saudi Arabia</p>
+          <h3>Alinma Bank</h3>
+          <p class="muted ph-copy">Placeholder: one line on the engagement and the outcome. Real copy in Step 3.</p>
+        </li>
+        <li class="ref">
+          <div class="ph" role="img" aria-label="Placeholder: reference image"><span>reference — King Fahad Medical City, hospital campus in daylight</span></div>
+          <p class="label">Healthcare · Saudi Arabia</p>
+          <h3>King Fahad Medical City</h3>
+          <p class="muted ph-copy">Placeholder: one line on the engagement and the outcome. Real copy in Step 3.</p>
+        </li>
+        <li class="ref">
+          <div class="ph" role="img" aria-label="Placeholder: reference image"><span>reference — Ministry of Transport, Oman, transport infrastructure</span></div>
+          <p class="label">Government · Oman</p>
+          <h3>Ministry of Transport</h3>
+          <p class="muted ph-copy">Placeholder: one line on the engagement and the outcome. Real copy in Step 3.</p>
+        </li>
+      </ul>
+      <ul class="logos" aria-label="Client logos (placeholders)">
+        <li class="ph"><span>logo — STC</span></li>
+        <li class="ph"><span>logo — Mobily</span></li>
+        <li class="ph"><span>logo — Riyad Bank</span></li>
+        <li class="ph"><span>logo — Saudi Electricity Co.</span></li>
+        <li class="ph"><span>logo — KAUST</span></li>
+        <li class="ph"><span>logo — Tadawul</span></li>
+        <li class="ph"><span>logo — Zakat Authority</span></li>
+        <li class="ph"><span>logo — Arab Bank</span></li>
+        <li class="ph"><span>logo — Saudi National Guard</span></li>
+        <li class="ph"><span>logo — Nazaha</span></li>
+        <li class="ph"><span>logo — Zain</span></li>
+        <li class="ph"><span>logo — Capital Market Authority</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CREDENTIALS -->
+  <section class="section creds reveal" id="credentials">
+    <div class="shell">
+      <div class="cred-group">
+        <p class="label">Organisational credentials</p>
+        <h2>Defined processes. Auditable controls.</h2>
+        <ul class="cred-list">
+          <li><b>CMMI Services</b><span>Maturity Level 3</span></li>
+          <li><b>ISO/IEC 20000-1</b><span>IT service management</span></li>
+          <li><b>ISO/IEC 27001</b><span>Information security</span></li>
+          <li><b>ISO 22301</b><span>Business continuity</span></li>
+          <li><b>ISO/IEC 38500</b><span>IT governance</span></li>
+          <li><b>ISO/IEC 42001</b><span>AI management systems</span></li>
+        </ul>
+      </div>
+      <div class="cred-group">
+        <p class="label">Certified professional expertise</p>
+        <h2>Certified specialists. Hands-on delivery.</h2>
+        <ul class="cred-list">
+          <li><b>Lead &amp; govern</b><span>PMP · PgMP · PRINCE2 · COBIT 2019 · TOGAF</span></li>
+          <li><b>Secure &amp; assure</b><span>CISSP · CISA · CISM · CEH · ISO/IEC 27001 Lead Implementer</span></li>
+          <li><b>Deliver &amp; operate</b><span>ITIL Managing Professional · ISO/IEC 20000 Lead Implementer · MCSE · CCIE</span></li>
+          <li><b>Improve &amp; manage data</b><span>Lean Six Sigma Black Belt · CDMP Master · PSM III</span></li>
+        </ul>
+      </div>
+      <div class="partners" style="grid-column:1/-1">
+        <p class="label">Technology partners</p>
+        <ul class="partner-row" aria-label="Partner logos (placeholders)">
+          <li class="ph"><span>logo — Alemba (exclusive partner)</span></li>
+          <li class="ph"><span>logo — Collibra</span></li>
+          <li class="ph"><span>logo — NAVEX</span></li>
+          <li class="ph"><span>logo — MetricStream</span></li>
+          <li class="ph"><span>logo — Lansweeper</span></li>
+          <li class="ph"><span>logo — Omnissa</span></li>
+          <li class="ph"><span>logo — Avolution</span></li>
+          <li class="ph"><span>logo — Run2Biz</span></li>
+          <li class="ph"><span>logo — Simpliix</span></li>
+          <li class="ph"><span>logo — Citsmart Central</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT BAND -->
+  <section class="contact on-navy reveal" id="contact">
+    <div class="shell">
+      <div class="contact-copy">
+        <p class="label">Start a conversation</p>
+        <h2>Bring your priorities. Let's shape the path.</h2>
+        <p class="lede">Tell us about the business challenge, the technology environment or the change you are planning.</p>
+        <p class="formula">People <b>×</b> Process <b>×</b> Technology</p>
+        <div class="contact-meta">
+          <p>Email <a class="link" href="mailto:info@globalges.net">info@globalges.net</a></p>
+          <p class="places"><span>London</span><span>UAE</span><span>KSA</span><span>Türkiye</span><span>Bahrain</span></p>
+          <p><a class="link" href="assets/GES-Company-Profile.pdf">Download the company profile (PDF)</a></p>
+        </div>
+      </div>
+      <form class="form" id="contactForm" action="mailto:info@globalges.net" method="get" enctype="text/plain">
+        <div class="row">
+          <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+          <div class="field"><label for="f-org">Organisation</label><input id="f-org" name="organisation" type="text" autocomplete="organization"></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="f-topic">What would you like to discuss?</label>
+            <select id="f-topic" name="topic">
+              <option>Digital transformation</option>
+              <option>IT service management</option>
+              <option>Cybersecurity &amp; governance</option>
+              <option>Data management</option>
+              <option>Enterprise technology solutions</option>
+              <option>Partnership</option>
+              <option>General enquiry</option>
+            </select>
+          </div>
+        </div>
+        <div class="field"><label for="f-msg">Message</label><textarea id="f-msg" name="body"></textarea></div>
+        <div class="actions">
+          <button class="btn btn-primary" type="submit">Discuss a requirement</button>
+          <p class="note">Opens a draft to info@globalges.net until the form has a backend.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
 </main>
+
+<footer class="footer">
+  <div class="shell">
+    <span class="wordmark">Global GES</span>
+    <a href="mailto:info@globalges.net">info@globalges.net</a>
+    <span class="places">London · UAE · KSA · Türkiye · Bahrain</span>
+    <span>© 2026 Global GES</span>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script>
+<script>
+(function(){
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* nav toggle */
+  var nav = document.getElementById('nav'), toggle = document.getElementById('navToggle');
+  toggle.addEventListener('click', function(){
+    var open = !nav.classList.contains('open');
+    nav.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.textContent = open ? 'Close' : 'Menu';
+  });
+  nav.querySelectorAll('.nav-links a').forEach(function(a){ a.addEventListener('click', function(){ nav.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); toggle.textContent='Menu'; }); });
+
+  /* inertia scroll (structural) — falls back to native scroll if Lenis is missing */
+  var lenis = null;
+  if (!reduce && window.Lenis) {
+    lenis = new Lenis({ lerp: 0.09, smoothWheel: true });
+    (function raf(t){ lenis.raf(t); requestAnimationFrame(raf); })(0);
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener('click', function(e){
+        var id = a.getAttribute('href'); if (id.length < 2) return;
+        var el = document.querySelector(id); if (!el) return;
+        e.preventDefault(); lenis.scrollTo(el, { offset: -72 }); el.setAttribute('tabindex','-1'); el.focus({ preventScroll: true });
+      });
+    });
+  }
+
+  /* hero: soft parallax, transform only */
+  var hero = document.getElementById('heroParallax');
+  if (!reduce && hero) {
+    var fine = window.matchMedia('(min-width: 761px)');
+    var onScroll = function(y){ if (!fine.matches) { hero.style.transform=''; return; } if (y < 1200) hero.style.transform = 'translate3d(0,' + (y * -0.12).toFixed(1) + 'px,0)'; };
+    if (lenis) lenis.on('scroll', function(e){ onScroll(e.scroll); });
+    else window.addEventListener('scroll', function(){ onScroll(window.scrollY); }, { passive: true });
+  }
+
+  /* reveals: only elements below the fold get the pre state, so nothing is hidden at rest */
+  var els = document.querySelectorAll('.reveal');
+  if (!reduce && 'IntersectionObserver' in window) {
+    var vh = window.innerHeight;
+    els.forEach(function(el){ if (el.getBoundingClientRect().top > vh * 0.9) el.classList.add('pre'); });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+    els.forEach(function(el){ if (el.classList.contains('pre')) io.observe(el); });
+  }
+})();
+</script>
 </body>
 </html>

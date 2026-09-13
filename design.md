@@ -80,10 +80,14 @@ Don't: italic headings. Bold serif. Serif for body text. Inter anywhere. Gradien
 
 ## Motion
 
-- **Structural:** none on load. The page is fully visible at rest. No scroll-triggered reveals that hide content.
-- **Polish:** hover on links and buttons (colour, 160ms, `cubic-bezier(.2,.7,.2,1)`), underline growth on nav links, a 1px lift on primary button press. `transform` and `opacity` only.
-- **Restraint rule:** at most two motion primitives per page. If removing a motion loses no information, remove it.
-- `prefers-reduced-motion: reduce` collapses all transitions to 0ms.
+Style chosen in Step 2: **Smooth & premium** (inertia scrolling, a soft parallax on the hero, clean reveals).
+
+- **Structural:** inertia scrolling via Lenis (`lerp` 0.09), loaded from a pinned CDN and falling back to native scroll if it fails to load. Anchor links scroll through Lenis with a 72px header offset and move focus to the target.
+- **Hero (primitive 1):** a one-time load sequence, each line of the hero rising 18px and fading in over 720ms with a 60 to 400ms stagger; the hero image settles from a 1.03 scale over 1100ms. Then a soft parallax on the hero image, moving at 0.12 of scroll speed, transform only, desktop only, stopped after 1200px.
+- **Reveals (primitive 2):** sections rise 22px and fade in over 700ms as they enter the viewport. The hidden state is applied by JavaScript only to sections below the fold at load, so the page is fully visible at rest without JavaScript, above the fold, and in thumbnails. Each section reveals once.
+- **Polish:** hover on links and buttons (colour, 160ms, `cubic-bezier(.2,.7,.2,1)`), underline growth on nav links, a 1px lift on primary button press. `transform` and `opacity` only. Grain, custom cursor and magnetic buttons are deferred to Step 5 and must not be added before then.
+- **Restraint rule:** two motion primitives per page, spent on the hero and the reveals. Nothing else animates on scroll. If removing a motion loses no information, remove it.
+- `prefers-reduced-motion: reduce` disables Lenis, the load sequence, the parallax and the reveals, and collapses all transitions to 0ms.
 
 ## Components
 
@@ -140,6 +144,8 @@ Avoid: the blue neon data-centre aisle from the current site, circuit boards, fu
 ## References
 
 - Current site (`globalges.net`, LEAP 2026 build): keep its paper, navy and gold tokens; keep its editorial section rhythm; replace Georgia with IBM Plex Serif and Arial with Atkinson Hyperlegible.
-- Company profile PDF for wording, services, partners and certifications.
+- Company profile PDF (`assets/GES-Company-Profile.pdf`) for wording, services, partners and certifications.
+- The client's ChatGPT-built site (home, about, services) supplied in Step 2: use its copy (philosophy, delivery journey, four capability groups, references, credentials, regional hubs) as the source text; do not copy its layout.
+- Email: the earlier LEAP site uses `info@globalges.net`, the newer build uses `info@gesglobal.net`. The site uses `info@globalges.net` until the client confirms which is correct.
 - Nyght Serif was the reference the client first named; IBM Plex Serif was the final choice.
 - Client's scene: a consulting team with a client's leadership around a table in a warm stone-and-glass interior.
