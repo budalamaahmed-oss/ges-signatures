@@ -48,83 +48,75 @@
 
 <main id="main">
 
-  <section class="page-hero" aria-labelledby="h1">
-    <div class="shell">
-      <div>
-        <p class="label accent" style="margin-bottom:24px">Contact</p>
+  <section class="contact-split" aria-labelledby="h1">
+    <div class="contact-panel on-navy">
+      <svg class="globe draw in" viewBox="0 0 400 400" aria-hidden="true"><use href="#globe"/></svg>
+      <div class="top">
+        <p class="label accent">Contact</p>
         <h1 id="h1">Bring your priorities. <em>Let's shape the path.</em></h1>
-      </div>
-      <div class="side">
-        <p class="lede">Tell us about the business challenge, the technology environment or the change you are planning, and we'll connect you with the right GES expert.</p>
+        <p class="lede">Tell us about the business challenge, the technology environment or the change you are planning. We'll connect you with the right GES expert.</p>
         <p class="formula">People <b>×</b> Processes <b>×</b> Technology</p>
       </div>
-    </div>
-  </section>
-
-  <section class="section contact-page reveal" id="form" aria-label="Contact GES">
-    <div class="shell">
-      <aside class="contact-aside">
-        <div class="block">
-          <p class="label accent">Email</p>
-          <a class="email link" href="mailto:info@globalges.net">info@globalges.net</a>
-          <p class="muted" style="font-size:var(--text-small)">For requirements, projects, partnerships and general enquiries.</p>
-        </div>
-        <div class="block">
-          <p class="label accent">Regional hubs</p>
-          <ul class="hub-list">
-            <li><span>London <span class="place">· United Kingdom</span></span><span class="time" data-tz="Europe/London"></span></li>
-            <li><span>Türkiye <span class="place">· Regional hub</span></span><span class="time" data-tz="Europe/Istanbul"></span></li>
-            <li><span>Saudi Arabia <span class="place">· Riyadh</span></span><span class="time" data-tz="Asia/Riyadh"></span></li>
-            <li><span>Bahrain <span class="place">· Regional hub</span></span><span class="time" data-tz="Asia/Bahrain"></span></li>
-            <li><span>UAE <span class="place">· United Arab Emirates</span></span><span class="time" data-tz="Asia/Dubai"></span></li>
-          </ul>
-        </div>
-        <div class="block">
-          <p class="label accent">Company profile</p>
-          <p><a class="link" href="assets/GES-Company-Profile.pdf">Download the company profile (PDF)</a></p>
-        </div>
-      </aside>
-
-      <div>
-        <form class="form light" id="contactForm" action="mailto:info@globalges.net" method="get" enctype="text/plain">
-          <div class="row">
-            <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
-            <div class="field"><label for="f-company">Company</label><input id="f-company" name="company" type="text" autocomplete="organization"></div>
-          </div>
-          <div class="row">
-            <div class="field"><label for="f-email">Business email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
-            <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
-          </div>
-          <div class="row">
-            <div class="field"><label for="f-country">Country</label><input id="f-country" name="country" type="text" autocomplete="country-name"></div>
-            <div class="field"><label for="f-topic">Area of interest</label>
-              <select id="f-topic" name="area_of_interest">
-                <option>Project Management &amp; Consultation</option>
-                <option>Cybersecurity &amp; Information Security</option>
-                <option>Governance, Risk &amp; Compliance</option>
-                <option>IT Strategy &amp; Planning</option>
-                <option>IT Service Management</option>
-                <option>Data Management &amp; Governance</option>
-                <option>Consultancy &amp; Digital Transformation</option>
-                <option>Enterprise Technology Solutions</option>
-                <option>Training &amp; Capability Development</option>
-                <option>Partnership</option>
-                <option>General enquiry</option>
-              </select>
-            </div>
-          </div>
-          <div class="field"><label for="f-msg">Message</label><textarea id="f-msg" name="body" rows="6"></textarea></div>
-          <div class="actions">
-            <button class="btn btn-primary magnet" type="submit">Send enquiry <span class="arrow">→</span></button>
-            <p class="note">Opens a draft to info@globalges.net until the form has a backend.</p>
-          </div>
-        </form>
-        <ol class="next-steps stagger">
-          <li><p class="num">01</p><h3>We read it properly.</h3><p>Your enquiry goes to the GES team, not a queue. We match it to the right expert by sector and capability.</p></li>
-          <li><p class="num">02</p><h3>A short conversation.</h3><p>A call to understand the environment, the priorities and the starting point, before anything is proposed.</p></li>
-          <li><p class="num">03</p><h3>A clear next step.</h3><p>An assessment, a workshop or a proposal, depending on where you are in the journey.</p></li>
-        </ol>
+      <div class="bottom">
+        <p class="label">Email</p>
+        <a class="email" href="mailto:info@globalges.net">info@globalges.net</a>
+        <p class="label" style="margin-top:8px">Regional hubs · local time</p>
+        <ul class="hubs">
+          <li><span><span class="name">London</span> · United Kingdom</span><span class="time" data-tz="Europe/London"></span></li>
+          <li><span><span class="name">Türkiye</span> · Regional hub</span><span class="time" data-tz="Europe/Istanbul"></span></li>
+          <li><span><span class="name">Saudi Arabia</span> · Riyadh</span><span class="time" data-tz="Asia/Riyadh"></span></li>
+          <li><span><span class="name">Bahrain</span> · Regional hub</span><span class="time" data-tz="Asia/Bahrain"></span></li>
+          <li><span><span class="name">UAE</span> · United Arab Emirates</span><span class="time" data-tz="Asia/Dubai"></span></li>
+        </ul>
+        <p class="profile-link"><a class="link" href="assets/GES-Company-Profile.pdf">Download the company profile (PDF) ↘</a></p>
       </div>
+    </div>
+
+    <div class="contact-col">
+      <div class="lead">
+        <p class="label accent">Enquiry</p>
+        <h2>Tell us where you want to go.</h2>
+        <p class="muted">A few details are enough. We read every enquiry and reply from the team, not a queue.</p>
+      </div>
+      <form class="form editorial" id="contactForm" action="mailto:info@globalges.net" method="get" enctype="text/plain">
+        <div class="row">
+          <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+          <div class="field"><label for="f-company">Company</label><input id="f-company" name="company" type="text" autocomplete="organization"></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="f-email">Business email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="f-country">Country</label><input id="f-country" name="country" type="text" autocomplete="country-name"></div>
+          <div class="field"><label for="f-topic">Area of interest</label>
+            <select id="f-topic" name="area_of_interest">
+              <option>Project Management &amp; Consultation</option>
+              <option>Cybersecurity &amp; Information Security</option>
+              <option>Governance, Risk &amp; Compliance</option>
+              <option>IT Strategy &amp; Planning</option>
+              <option>IT Service Management</option>
+              <option>Data Management &amp; Governance</option>
+              <option>Consultancy &amp; Digital Transformation</option>
+              <option>Enterprise Technology Solutions</option>
+              <option>Training &amp; Capability Development</option>
+              <option>Partnership</option>
+              <option>General enquiry</option>
+            </select>
+          </div>
+        </div>
+        <div class="field"><label for="f-msg">Message</label><textarea id="f-msg" name="body" rows="4"></textarea></div>
+        <div class="actions">
+          <button class="btn btn-primary magnet" type="submit">Send enquiry <span class="arrow">→</span></button>
+          <p class="note">Opens a draft to info@globalges.net until the form has a backend.</p>
+        </div>
+      </form>
+      <h2 class="sr">What happens next</h2>
+      <ol class="next-steps stagger">
+        <li><p class="num">01</p><h3>We read it properly.</h3><p>Your enquiry goes to the GES team, not a queue. We match it to the right expert by sector and capability.</p></li>
+        <li><p class="num">02</p><h3>A short conversation.</h3><p>A call to understand the environment, the priorities and the starting point, before anything is proposed.</p></li>
+        <li><p class="num">03</p><h3>A clear next step.</h3><p>An assessment, a workshop or a proposal, depending on where you are in the journey.</p></li>
+      </ol>
     </div>
   </section>
 

@@ -145,6 +145,12 @@ Avoid: the blue neon data-centre aisle from the current site, circuit boards, fu
 - Company profile download as the secondary action.
 - Proof before the ask: clients, partners, certifications appear above the contact panel.
 
+## QA record
+
+- **Responsive (Phase 10, 2026-09-13):** all six pages checked at 320, 375, 414, 768, 1024 and 1440px. No horizontal overflow, no element wider than the viewport outside clipped decorative panels, no two-line buttons or nav links (nav collapses to the menu below 1140px), every button, chip and menu control at least 44px tall.
+- **Accessibility (Phase 11):** one h1 per page and no skipped heading levels; every image has alt and dimensions; every form control has a label; skip link and landmarks on every page; focus visible everywhere; reduced motion honoured. Contrast: all ivory-ground pairings above 8:1; navy-panel text lifted so stone text, blue text and gold text on navy or near-black all exceed 4.5:1 (`--stone-on-navy` 81%, `--accent-lift` 75%, `--gold-text` 83%; `--gold` stays for hairlines only).
+- **Performance:** fonts preconnected with display swap; images are progressive JPEGs under 300KB with width and height set; below-the-fold images lazy-load; one small dependency (Lenis) with a native fallback; all motion on transform, opacity and clip-path.
+
 ## Anti-patterns
 
 - Cream + serif + terracotta, near-black + acid accent, broadsheet hairline grids.
