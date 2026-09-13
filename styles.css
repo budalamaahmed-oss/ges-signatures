@@ -328,7 +328,7 @@ button{font:inherit;color:inherit}
 .eco-link::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--accent);opacity:.8}
 .eco-link::after{content:"";position:absolute;right:0;top:50%;width:7px;height:7px;border-top:1px solid var(--accent);border-right:1px solid var(--accent);transform:translateY(-50%) rotate(45deg)}
 .eco-link span{position:relative;top:-16px;background:var(--bg);padding:0 var(--space-2);font-family:var(--font-mono);font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
-.partners{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.partners{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
 .partner{background:var(--bg);padding:var(--space-6);display:grid;gap:var(--space-3);align-content:space-between;min-height:150px;min-width:0;transition:background-color var(--dur) var(--ease)}
 .partner:hover{background:var(--white)}
 .partner .name{font-family:var(--font-display);font-size:1.35rem;line-height:1.15}
@@ -376,7 +376,7 @@ button{font:inherit;color:inherit}
 .logo-field{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
 .logo-field li{background:var(--bg);aspect-ratio:5/3;display:grid;place-items:center;padding:var(--space-6);min-width:0;transition:background-color var(--dur) var(--ease)}
 .logo-field li:hover{background:var(--white)}
-.logo-field img{max-height:44px;width:auto;max-width:78%;filter:grayscale(1) contrast(1.05);opacity:.7;mix-blend-mode:multiply;transition:opacity var(--dur) var(--ease),filter var(--dur) var(--ease)}
+.logo-field img{max-height:64px;width:auto;max-width:82%;filter:grayscale(1) contrast(1.05);opacity:.7;mix-blend-mode:multiply;transition:opacity var(--dur) var(--ease),filter var(--dur) var(--ease)}
 .logo-field li:hover img{opacity:1;filter:grayscale(0)}
 @media (max-width:900px){
   .clients .shell{grid-template-columns:minmax(0,1fr)}
@@ -696,3 +696,23 @@ html.lenis,html.lenis body{height:auto}
 .next-steps h3{font-size:1.25rem}
 .next-steps p{font-size:var(--text-small);color:var(--ink-2)}
 @media (max-width:900px){.contact-page .shell{grid-template-columns:minmax(0,1fr)}.contact-aside{position:static}.next-steps{grid-template-columns:minmax(0,1fr)}}
+
+/* projects register: the full engagement list, filterable */
+.proj-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-8);margin-bottom:var(--space-16)}
+.proj-cards .project .frame{aspect-ratio:3/2}
+.proj-cards > li:nth-child(2){margin-top:var(--space-10)}
+@media (max-width:900px){.proj-cards{grid-template-columns:minmax(0,1fr)}.proj-cards > li:nth-child(2){margin-top:0}}
+.register{border-top:1px solid var(--line)}
+.register > li{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,5fr) minmax(0,2fr) minmax(0,2fr);gap:var(--space-6);padding:var(--space-6) var(--space-3);margin-inline:calc(-1 * var(--space-3));border-bottom:1px solid var(--line);align-items:baseline;min-width:0;scroll-margin-top:96px;transition:background-color var(--dur) var(--ease)}
+.register > li:hover{background:var(--surface)}
+.register h3{font-size:1.25rem;font-weight:500}
+.register .eng{color:var(--ink-2);font-size:var(--text-small)}
+.register .meta{font-family:var(--font-mono);font-size:var(--text-label);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);display:grid;gap:2px}
+.register .meta b{font-weight:400;color:var(--accent)}
+.register .capn{font-size:var(--text-small);color:var(--ink-2)}
+.register-head{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,5fr) minmax(0,2fr) minmax(0,2fr);gap:var(--space-6);padding-block:var(--space-3);font-family:var(--font-mono);font-size:var(--text-label);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+@media (max-width:900px){
+  .register > li,.register-head{grid-template-columns:minmax(0,1fr);gap:var(--space-2)}
+  .register-head{display:none}
+  .register .meta{grid-auto-flow:column;justify-content:start;gap:var(--space-4)}
+}

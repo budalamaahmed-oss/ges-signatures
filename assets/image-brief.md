@@ -32,19 +32,6 @@ Every image follows the Assets plan in `design.md`: GES consultants with a clien
 - The blue neon data-centre image from the current site is not to be used anywhere.
 - No video slots on this page.
 
-## Projects page — images still needed
+## Projects page
 
-Same shared style line as above. All 3:2 horizontal, 1800×1200. Sector scenes, never a depiction of the named institution's actual building. Save into `assets/projects/` with these names.
-
-| # | Engagement | Filename | Prompt |
-|---|---|---|---|
-| 1 | Ministry of Industry & Mineral Resources · Saudi Arabia | `assets/projects/ministry-of-industry.jpg` | Exterior of a modern government ministry building in Riyadh at early morning: pale limestone facade with deep vertical fins, a wide stone forecourt, a flagpole shadow, two officials in thobes walking towards the entrance at a distance. Calm, orderly, institutional. |
-| 2 | CNN Türk · Türkiye | `assets/projects/cnn-turk.jpg` | Interior corridor of a modern broadcast facility in Istanbul: glass-walled control rooms with screens switched off, warm timber and stone, soft daylight from a clerestory, one engineer walking away from camera. Technical but quiet, no glowing screens. |
-| 3 | The Authority of Awqaf · country to confirm | `assets/projects/awqaf.jpg` | A data centre operations room from the observation side: a clean white raised-floor hall seen through glass, neat rows of pale grey cabinets with doors closed, soft even lighting, no coloured LEDs, one operator at a desk in the foreground with paper documentation. Calm and controlled. |
-| 4 | Principal Buyers · country to confirm | `assets/projects/principal-buyers.jpg` | A modern corporate headquarters lobby with a security reception desk in pale stone, a turnstile line, a professional badging in, soft daylight from a tall window, warm neutral tones. Security shown as order, not threat. |
-| 5 | Confidential client · Oracle Cloud disaster recovery | `assets/projects/oci-dr.jpg` | Two engineers at a standing desk in a quiet enterprise office reviewing a printed recovery runbook, a closed laptop beside it, a large window with a hazy city skyline, stone and timber interior. Calm, procedural. |
-| 6 | Alinma Bank · Saudi Arabia | `assets/projects/alinma-bank.jpg` | A modern bank headquarters exterior in Riyadh at dawn: a glass-and-stone tower rising behind a landscaped forecourt with date palms, a single employee crossing the plaza, pale sky. Architecture as setting. |
-| 7 | King Fahad Medical City · Saudi Arabia | `assets/projects/king-fahad-medical-city.jpg` | Interior atrium of a modern hospital: pale stone floor, a long skylight, planting, a nurse and a visitor walking in the middle distance, soft diffused daylight. Clean and unhurried. |
-| 8 | Ministry of Transport · Oman | `assets/projects/ministry-of-transport-oman.jpg` | A new bus and rail station in Oman at early morning: a sweeping pale canopy, a stone platform, rocky hills behind, sparse passengers, warm light. Elevated viewpoint, calm and orderly. |
-
-Already in place: Eastern Health Cluster (`ref-healthcare.jpg`), Saudi Railway Company (`ref-transport.jpg`), Oromia Bank (`ref-banking.jpg`), Bustami & Saheb Group (`hero-consulting.jpg`).
+Rebuilt from the company profile (2026-09-13). The page now has one featured engagement and three image cards, all with images in place, and a filterable text register of thirty engagements that needs no imagery. No further project images are required unless GES wants more image cards.
