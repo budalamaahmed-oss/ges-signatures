@@ -71,12 +71,12 @@ Don't: italic headings. Bold serif. Serif for body text. Inter anywhere. Gradien
 - 4pt scale: `--space-1: 4px` through `--space-12: 96px`, plus `--space-section: clamp(72px, 10vw, 144px)`.
 - Content width 1240px max. Side gutter `clamp(16px, 4vw, 48px)` set once on `body`.
 - Grid: 12 columns on desktop, asymmetric by default (7/5 or 8/4 splits), collapsing to one column under 760px. Image-bearing tracks use `minmax(0, 1fr)`.
-- Sections are separated by generous space and at most one gold hairline, not by background-colour bands stacked one after another. One deep-navy panel per page at most.
+- Section rhythm alternates ivory, stone and navy grounds so the page never reads as one colour: ivory hero, navy philosophy, stone journey, ivory capabilities, ivory proof, stone credentials, navy contact. Never two of the same ground in a row except ivory. Up to two deep-navy panels per page: the thesis moment and the contact band.
 - The page opens with type, not a full-viewport hero. Hero height fits its content.
 
 ## Signature element
 
-**The formula.** `People × Process × Technology` set in Space Mono with the × in GES blue. It appears once in the hero lede and once near the contact call, and is the visual thread of the site. Related moves: a single gold hairline under section headings, and the wireframe globe from the logo used once, large and cropped, as a quiet line drawing rather than an icon.
+**The formula.** `People × Process × Technology` set in Space Mono with the × in GES blue (lifted blue on navy). It appears small in the hero, large as the centrepiece of the navy philosophy panel, and again beside the contact form. Related moves: a single gold hairline under section headings; every image sits in a `.frame` with a 12px-inset gold hairline; the wireframe globe from the logo (`#globe` symbol in index.html) drawn large and cropped in gold hairline at low opacity on the navy panels, with a stroke-draw animation on reveal; film grain at 5% over the whole page.
 
 ## Motion
 
@@ -85,9 +85,9 @@ Style chosen in Step 2: **Smooth & premium** (inertia scrolling, a soft parallax
 - **Structural:** inertia scrolling via Lenis (`lerp` 0.09), loaded from a pinned CDN and falling back to native scroll if it fails to load. Anchor links scroll through Lenis with a 72px header offset and move focus to the target.
 - **Hero (primitive 1):** a one-time load sequence, each line of the hero rising 18px and fading in over 720ms with a 60 to 400ms stagger; the hero image settles from a 1.03 scale over 1100ms. Then a soft parallax on the hero image, moving at 0.12 of scroll speed, transform only, desktop only, stopped after 1200px.
 - **Reveals (primitive 2):** sections rise 22px and fade in over 700ms as they enter the viewport. The hidden state is applied by JavaScript only to sections below the fold at load, so the page is fully visible at rest without JavaScript, above the fold, and in thumbnails. Each section reveals once.
-- **Polish:** hover on links and buttons (colour, 160ms, `cubic-bezier(.2,.7,.2,1)`), underline growth on nav links, a 1px lift on primary button press. `transform` and `opacity` only. Grain, custom cursor and magnetic buttons are deferred to Step 5 and must not be added before then.
-- **Restraint rule:** two motion primitives per page, spent on the hero and the reveals. Nothing else animates on scroll. If removing a motion loses no information, remove it.
-- `prefers-reduced-motion: reduce` disables Lenis, the load sequence, the parallax and the reveals, and collapses all transitions to 0ms.
+- **Polish (pulled forward from Step 5 at the client's request):** hover on links and buttons (colour, 180ms, `cubic-bezier(.2,.7,.2,1)`), arrow nudge on buttons, underline growth on nav links, capability rows tint to stone and reveal an arrow on hover, reference images scale 1.03 on hover, the nav compacts and gains a soft shadow after 24px of scroll, primary buttons are magnetic (6px max, fine pointers only), the hero image unveils with a clip-path wipe and settles from 1.06 scale, the globe line-draws on reveal, staggered children inside revealed sections. Film grain is a fixed SVG noise layer at 5% multiply. No custom cursor. `transform`, `opacity` and `clip-path` only.
+- **Restraint rule:** two scroll-driven primitives per page (hero parallax, section reveals with their stagger and the globe draw). Everything else is hover or load. If removing a motion loses no information, remove it.
+- `prefers-reduced-motion: reduce` disables Lenis, the load sequence, the parallax, the reveals, the globe draw and the magnetic buttons, and collapses all transitions to 0ms.
 
 ## Components
 

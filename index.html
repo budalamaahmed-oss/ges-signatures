@@ -11,22 +11,24 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500&family=Atkinson+Hyperlegible:wght@400;700&family=Space+Mono:wght@400;700&display=swap">
 <script>document.documentElement.classList.add('js');</script>
 <style>
-/* Global GES · Step 2 · Direction: Daylight Stone · display: IBM Plex Serif · accent hue 256 · motion: smooth & premium */
+/* Global GES · Direction: Daylight Stone · display: IBM Plex Serif · accent hue 256 · motion: smooth & premium */
 :root{
   --bg: oklch(96% 0.012 90);
   --surface: oklch(91.5% 0.015 88);
+  --surface-2: oklch(88% 0.018 86);
   --ink: oklch(24% 0.04 250);
   --ink-2: oklch(44% 0.035 250);
   --accent: oklch(50% 0.135 256);
   --accent-2: oklch(44% 0.135 256);
+  --accent-lift: oklch(68% 0.155 250);
   --navy: oklch(22% 0.05 250);
   --navy-2: oklch(28% 0.055 248);
   --gold: oklch(73% 0.072 84);
+  --gold-dim: oklch(60% 0.07 84);
   --line: oklch(84% 0.018 90);
   --line-dark: oklch(36% 0.045 248);
   --ivory-on-navy: oklch(95% 0.012 90);
   --stone-on-navy: oklch(74% 0.022 85);
-  --placeholder: oklch(88% 0.014 88);
   --placeholder-ink: oklch(52% 0.03 250);
   --focus: oklch(50% 0.135 256);
 
@@ -34,8 +36,8 @@
   --font-body: "Atkinson Hyperlegible", "Segoe UI", Arial, sans-serif;
   --font-mono: "Space Mono", ui-monospace, "Courier New", monospace;
 
-  --text-display: clamp(2.6rem, 6.5vw, 5.2rem);
-  --text-h2: clamp(1.9rem, 3.4vw, 2.8rem);
+  --text-display: clamp(2.8rem, 7vw, 5.8rem);
+  --text-h2: clamp(2.1rem, 4.2vw, 3.4rem);
   --text-h3: 1.5rem;
   --text-lede: clamp(1.125rem, 1.6vw, 1.35rem);
   --text-body: 1.0625rem;
@@ -44,12 +46,12 @@
 
   --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-6: 24px;
   --space-8: 32px; --space-10: 48px; --space-12: 96px;
-  --space-section: clamp(72px, 10vw, 144px);
+  --space-section: clamp(80px, 11vw, 160px);
   --gutter: clamp(16px, 4vw, 48px);
   --max: 1240px;
 
   --ease: cubic-bezier(.2,.7,.2,1);
-  --dur: 160ms;
+  --dur: 180ms;
 }
 
 /* ---------- base ---------- */
@@ -58,68 +60,78 @@ html{scroll-behavior:auto}
 body{
   margin:0;background:var(--bg);color:var(--ink);
   font-family:var(--font-body);font-size:var(--text-body);line-height:1.55;
-  -webkit-font-smoothing:antialiased;
+  -webkit-font-smoothing:antialiased;position:relative;
+}
+/* film grain: one fixed layer, very light */
+body::after{
+  content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.055;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-size:220px 220px;mix-blend-mode:multiply;
 }
 main{display:block}
 h1,h2,h3{font-family:var(--font-display);font-weight:400;font-style:normal;margin:0;text-wrap:balance;overflow-wrap:anywhere;min-width:0}
-h1{font-size:var(--text-display);line-height:1.02;letter-spacing:-.01em}
-h2{font-size:var(--text-h2);line-height:1.1}
+h1{font-size:var(--text-display);line-height:1;letter-spacing:-.015em}
+h2{font-size:var(--text-h2);line-height:1.06;letter-spacing:-.01em}
 h3{font-size:var(--text-h3);font-weight:500;line-height:1.2}
 p{margin:0}
 a{color:var(--ink);text-decoration:none}
 ul,ol{margin:0;padding:0;list-style:none}
 img{max-width:100%;height:auto;display:block}
 :focus-visible{outline:2px solid var(--focus);outline-offset:3px}
-.shell{max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter)}
+.shell{max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter);position:relative}
 .skip{position:absolute;left:var(--gutter);top:-100px;background:var(--navy);color:var(--ivory-on-navy);padding:var(--space-2) var(--space-4);font-family:var(--font-mono);font-size:var(--text-small);z-index:100}
 .skip:focus{top:var(--space-4)}
 
-.label{font-family:var(--font-mono);font-size:var(--text-label);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.label{font-family:var(--font-mono);font-size:var(--text-label);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+.label.accent{color:var(--accent)}
 .lede{font-size:var(--text-lede);line-height:1.45;max-width:36ch}
 .body{max-width:62ch}
 .muted{color:var(--ink-2)}
 .formula{font-family:var(--font-mono);font-size:.9rem;letter-spacing:.06em;white-space:nowrap}
 .formula b{color:var(--accent);font-weight:400}
 .rule{height:1px;background:var(--gold);border:0;margin:0}
+.arrow{font-family:var(--font-mono);display:inline-block;transition:transform var(--dur) var(--ease)}
 
-/* ---------- placeholders (Step 2 only) ---------- */
-.ph{
-  background:var(--placeholder);
-  border:1px dashed var(--placeholder-ink);
-  color:var(--placeholder-ink);
-  font-family:var(--font-mono);font-size:var(--text-label);letter-spacing:.08em;text-transform:uppercase;
-  display:grid;place-items:center;text-align:center;padding:var(--space-4);
-  min-width:0;max-width:100%;
-}
-.ph span{max-width:28ch;line-height:1.5}
+/* image frames: a real image or, until it arrives, a quiet stone block with a hairline inset */
+.frame{position:relative;background:var(--surface-2);overflow:hidden;min-width:0;max-width:100%}
+.frame::after{content:"";position:absolute;inset:12px;border:1px solid var(--gold);opacity:.55;pointer-events:none}
+.frame img{width:100%;height:100%;object-fit:cover;display:block}
+.frame .ph{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:var(--space-6);font-family:var(--font-mono);font-size:var(--text-label);letter-spacing:.1em;text-transform:uppercase;color:var(--placeholder-ink)}
+.frame .ph span{max-width:26ch;line-height:1.6}
 .ph-copy{color:var(--placeholder-ink)}
 
 /* ---------- buttons ---------- */
 .btn{
-  display:inline-flex;align-items:center;gap:var(--space-2);
+  display:inline-flex;align-items:center;gap:var(--space-3);
   font-family:var(--font-mono);font-size:.85rem;letter-spacing:.02em;line-height:1;
-  padding:14px 20px;border-radius:2px;border:1px solid transparent;
-  white-space:nowrap;cursor:pointer;
+  padding:16px 22px;border-radius:2px;border:1px solid transparent;
+  white-space:nowrap;cursor:pointer;position:relative;overflow:hidden;
   transition:background-color var(--dur) var(--ease),color var(--dur) var(--ease),border-color var(--dur) var(--ease),transform var(--dur) var(--ease);
 }
+.btn .arrow{margin-left:2px}
+.btn:hover .arrow{transform:translateX(4px)}
 .btn-primary{background:var(--accent);color:var(--ivory-on-navy);border-color:var(--accent)}
 .btn-primary:hover{background:var(--accent-2);border-color:var(--accent-2)}
 .btn-primary:active{transform:translateY(1px)}
 .btn-secondary{background:transparent;color:var(--ink);border-color:var(--ink)}
-.btn-secondary:hover{background:var(--surface)}
+.btn-secondary:hover{background:var(--ink);color:var(--bg)}
 .btn-secondary:active{transform:translateY(1px)}
 .on-navy .btn-secondary{color:var(--ivory-on-navy);border-color:var(--ivory-on-navy)}
-.on-navy .btn-secondary:hover{background:var(--navy-2)}
-.btn[aria-disabled="true"]{background:var(--surface);color:var(--ink-2);border-color:var(--surface);cursor:not-allowed}
-.link{position:relative;color:var(--ink);text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:1px;text-underline-offset:4px;transition:text-decoration-thickness var(--dur) var(--ease)}
-.link:hover{text-decoration-thickness:2px}
+.on-navy .btn-secondary:hover{background:var(--ivory-on-navy);color:var(--navy)}
+.link{color:inherit;text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:1px;text-underline-offset:5px;transition:text-decoration-thickness var(--dur) var(--ease),color var(--dur) var(--ease)}
+.link:hover{text-decoration-thickness:2px;color:var(--accent)}
+.on-navy .link{text-decoration-color:var(--gold)}
+.on-navy .link:hover{color:var(--gold)}
 
 /* ---------- nav ---------- */
-.nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line)}
-.nav .shell{display:flex;align-items:center;justify-content:space-between;gap:var(--space-6);min-height:72px}
-.nav .brand img{height:40px;width:auto}
+.nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line);transition:box-shadow var(--dur) var(--ease)}
+.nav.scrolled{box-shadow:0 1px 0 var(--line),0 12px 32px -20px oklch(24% 0.04 250 / .45)}
+.nav .shell{display:flex;align-items:center;justify-content:space-between;gap:var(--space-6);min-height:76px;transition:min-height var(--dur) var(--ease)}
+.nav.scrolled .shell{min-height:64px}
+.nav .brand img{height:40px;width:auto;transition:height var(--dur) var(--ease)}
+.nav.scrolled .brand img{height:34px}
 .nav-links{display:flex;gap:var(--space-8);align-items:center}
-.nav-links a{font-family:var(--font-body);font-size:var(--text-small);position:relative;padding-block:var(--space-2)}
+.nav-links a{font-size:var(--text-small);position:relative;padding-block:var(--space-2)}
 .nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--accent);transition:right var(--dur) var(--ease)}
 .nav-links a:hover::after{right:0}
 .nav-actions{display:flex;gap:var(--space-3);align-items:center}
@@ -133,81 +145,121 @@ img{max-width:100%;height:auto;display:block}
 }
 
 /* ---------- hero ---------- */
-.hero{padding-block:clamp(48px,7vw,96px) var(--space-section)}
-.hero .shell{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,5vw,72px);align-items:end}
-.hero-copy{display:grid;gap:var(--space-6);min-width:0}
-.hero-copy h1{max-width:13ch}
-.hero-copy .lede{max-width:34ch}
+.hero{position:relative;padding-block:clamp(56px,7vw,104px) 0;overflow:clip}
+.hero .shell{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(32px,5vw,80px);align-items:end}
+.hero-copy{display:grid;gap:var(--space-6);min-width:0;padding-bottom:clamp(48px,6vw,88px)}
+.hero-copy h1{max-width:12ch}
+.hero-copy h1 em{font-style:normal;color:var(--accent)}
+.hero-copy .lede{max-width:36ch}
 .hero-actions{display:flex;gap:var(--space-3);flex-wrap:wrap;align-items:center}
-.hero-meta{display:flex;gap:var(--space-6);flex-wrap:wrap;align-items:baseline}
+.hero-meta{display:flex;gap:var(--space-6);flex-wrap:wrap;align-items:baseline;padding-top:var(--space-4);border-top:1px solid var(--line)}
 .hero-meta a{font-family:var(--font-mono);font-size:var(--text-small)}
-.hero-media{position:relative;min-width:0}
-.hero-media .ph,.hero-media .hero-img{aspect-ratio:4/5;width:100%}
-.hero-media .hero-img{object-fit:cover;object-position:50% 50%}
-.hero-media-inner{will-change:transform}
-@media (max-width:760px){
+.hero-media{position:relative;min-width:0;align-self:stretch}
+.hero-media-inner{position:relative;height:100%;min-height:520px;will-change:transform}
+.hero-media .frame{position:absolute;inset:0;margin-right:calc(-1 * var(--gutter));background:var(--surface-2)}
+.hero-media .frame img{filter:saturate(.82) contrast(.96);object-position:50% 50%}
+.hero-media .frame::before{content:"";position:absolute;inset:0;background:oklch(80% 0.06 84);mix-blend-mode:soft-light;opacity:.55;pointer-events:none;z-index:1}
+.hero-media .frame::after{inset:16px;z-index:2}
+.hero-caption{position:absolute;left:0;bottom:0;z-index:3;background:var(--bg);padding:var(--space-3) var(--space-4) var(--space-3) 0;font-family:var(--font-mono);font-size:var(--text-label);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);max-width:32ch}
+.hero-band{border-top:1px solid var(--line);background:var(--surface)}
+.hero-band .shell{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-6);padding-block:var(--space-6)}
+.hero-band p{font-size:var(--text-small);color:var(--ink-2);display:grid;gap:2px}
+.hero-band b{font-family:var(--font-mono);font-weight:400;color:var(--ink);letter-spacing:.06em;text-transform:uppercase;font-size:var(--text-label)}
+@media (max-width:860px){
   .hero .shell{grid-template-columns:minmax(0,1fr)}
+  .hero-copy{padding-bottom:0}
   .hero-copy h1{max-width:none}
-  .hero-media .ph,.hero-media .hero-img{aspect-ratio:4/3}
+  .hero-media-inner{min-height:0;aspect-ratio:4/3;margin-top:var(--space-6)}
+  .hero-media .frame{margin-right:0}
+  .hero-band .shell{grid-template-columns:minmax(0,1fr);gap:var(--space-3)}
 }
 
 /* ---------- sections ---------- */
-.section{padding-block:var(--space-section)}
-.section-head{display:grid;gap:var(--space-3);max-width:30ch;margin-bottom:var(--space-10)}
-.section-head .rule{width:96px;margin-top:var(--space-2)}
-.section + .section{border-top:1px solid var(--line)}
+.section{padding-block:var(--space-section);position:relative}
+.section-head{display:grid;gap:var(--space-4);max-width:34ch;margin-bottom:var(--space-10)}
+.section-head .rule{width:72px}
+.stone{background:var(--surface)}
+.on-navy{background:var(--navy);color:var(--ivory-on-navy)}
+.on-navy .label{color:var(--stone-on-navy)}
+.on-navy .label.accent{color:var(--accent-lift)}
+.on-navy .muted,.on-navy .lede{color:var(--stone-on-navy)}
+.on-navy .rule{background:var(--gold)}
 
-/* the problem: formula moment */
-.problem .shell{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,96px);align-items:start}
-.problem .body{font-size:var(--text-lede);line-height:1.45}
-.formula-big{font-family:var(--font-mono);font-size:clamp(1.4rem,3.6vw,2.6rem);line-height:1.25;letter-spacing:-.01em;display:grid;gap:var(--space-2)}
-.formula-big b{color:var(--accent);font-weight:400}
-.three{display:grid;gap:0;border-top:1px solid var(--line);margin-top:var(--space-8)}
-.three li{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:var(--space-6);padding-block:var(--space-6);border-bottom:1px solid var(--line);align-items:baseline}
-.three h3{font-size:var(--text-h3)}
-.three p{color:var(--ink-2)}
-@media (max-width:760px){
+/* the globe: the logo's wireframe drawn large */
+.globe{position:absolute;pointer-events:none;fill:none;stroke:var(--gold);stroke-width:1.1;opacity:.5}
+.globe.draw path,.globe.draw circle,.globe.draw ellipse{stroke-dasharray:1600;stroke-dashoffset:1600}
+.globe.in path,.globe.in circle,.globe.in ellipse{animation:draw 2400ms var(--ease) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+/* philosophy: the formula moment on navy */
+.problem{overflow:clip}
+.problem .globe{right:-14vw;top:50%;width:min(72vw,860px);transform:translateY(-50%);opacity:.32}
+.problem .shell{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(40px,6vw,110px);align-items:start}
+.problem .body{font-size:var(--text-lede);line-height:1.45;color:var(--stone-on-navy)}
+.formula-big{font-family:var(--font-mono);font-size:clamp(2rem,5.2vw,4.4rem);line-height:1.08;letter-spacing:-.02em;display:grid;gap:var(--space-1);color:var(--ivory-on-navy);margin-bottom:var(--space-10)}
+.formula-big b{color:var(--accent-lift);font-weight:400}
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-8)}
+.three li{display:grid;gap:var(--space-3);align-content:start;padding-top:var(--space-4);border-top:1px solid var(--gold)}
+.three .label{color:var(--gold)}
+.three h3{font-size:1.6rem;color:var(--ivory-on-navy)}
+.three p{color:var(--stone-on-navy);font-size:var(--text-small)}
+@media (max-width:860px){
   .problem .shell{grid-template-columns:minmax(0,1fr)}
-  .three li{grid-template-columns:minmax(0,1fr);gap:var(--space-2)}
+  .three{grid-template-columns:minmax(0,1fr);gap:var(--space-6)}
+  .problem .globe{right:-40vw;top:auto;bottom:-20vw;width:120vw;transform:none;opacity:.2}
 }
 
-/* how it works: the journey (ordinal, so numbered) */
-.journey{counter-reset:step}
-.journey ol{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line)}
-.journey li{counter-increment:step;padding:var(--space-6);border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;gap:var(--space-3);align-content:start;min-width:0}
-.journey li::before{content:"0" counter(step);font-family:var(--font-mono);font-size:var(--text-label);letter-spacing:.12em;color:var(--accent)}
-.journey h3{font-size:1.35rem}
+/* how it works: the journey */
+.journey ol{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;position:relative;border-top:1px solid var(--gold)}
+.journey li{padding:var(--space-8) var(--space-4) 0 0;display:grid;gap:var(--space-3);align-content:start;min-width:0;position:relative}
+.journey li::before{content:"";position:absolute;top:-1px;left:0;width:10px;height:10px;background:var(--surface);border:1px solid var(--gold);border-radius:50%;transform:translateY(-50%)}
+.journey .num{font-family:var(--font-mono);font-size:var(--text-label);letter-spacing:.14em;color:var(--accent)}
+.journey h3{font-size:1.5rem;transition:color var(--dur) var(--ease)}
+.journey li:hover h3{color:var(--accent)}
 .journey p{color:var(--ink-2);font-size:var(--text-small)}
-@media (max-width:900px){.journey ol{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:540px){.journey ol{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:1000px){.journey ol{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:var(--space-8)}}
+@media (max-width:560px){.journey ol{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
-/* capabilities: rows, not cards */
+/* capabilities: rows with numerals and hover */
 .caps .shell{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,5vw,96px);align-items:start}
-.caps .section-head{margin-bottom:0;position:sticky;top:96px}
+.caps .section-head{margin-bottom:0;position:sticky;top:104px}
 .cap-list{border-top:1px solid var(--line)}
-.cap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--space-6);padding-block:var(--space-8);border-bottom:1px solid var(--line);min-width:0}
-.cap h3{font-size:1.6rem}
+.cap{display:grid;grid-template-columns:56px minmax(0,5fr) minmax(0,6fr) 32px;gap:var(--space-6);padding:var(--space-8) var(--space-3);margin-inline:calc(-1 * var(--space-3));border-bottom:1px solid var(--line);min-width:0;align-items:start;transition:background-color var(--dur) var(--ease)}
+.cap:hover{background:var(--surface)}
+.cap .num{font-family:var(--font-mono);font-size:var(--text-label);letter-spacing:.12em;color:var(--accent);padding-top:6px}
+.cap h3{font-size:1.75rem;transition:color var(--dur) var(--ease)}
+.cap:hover h3{color:var(--accent)}
 .cap .tags{font-family:var(--font-mono);font-size:var(--text-label);letter-spacing:.06em;color:var(--ink-2);margin-top:var(--space-3);line-height:1.8}
 .cap p{color:var(--ink-2)}
-.cap .claim{color:var(--ink);font-family:var(--font-display);font-size:1.15rem;margin-bottom:var(--space-3)}
+.cap .claim{color:var(--ink);font-family:var(--font-display);font-size:1.2rem;margin-bottom:var(--space-3)}
+.cap .arrow{color:var(--accent);padding-top:8px;opacity:0;transform:translateX(-6px);transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease)}
+.cap:hover .arrow{opacity:1;transform:none}
 .caps-more{margin-top:var(--space-8)}
 @media (max-width:900px){
   .caps .shell{grid-template-columns:minmax(0,1fr)}
   .caps .section-head{position:static;margin-bottom:var(--space-6)}
-  .cap{grid-template-columns:minmax(0,1fr);gap:var(--space-3)}
+  .cap{grid-template-columns:40px minmax(0,1fr);gap:var(--space-3)}
+  .cap > :nth-child(3){grid-column:2}
+  .cap .arrow{display:none}
 }
 
 /* proof */
-.proof .facts{display:flex;gap:var(--space-8);flex-wrap:wrap;font-family:var(--font-mono);font-size:var(--text-small);color:var(--ink-2);margin-bottom:var(--space-10);font-variant-numeric:tabular-nums}
-.proof .facts b{color:var(--ink);font-weight:400}
-.refs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-6);margin-bottom:var(--space-10)}
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--space-6);margin-bottom:var(--space-12);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding-block:var(--space-8)}
+.facts li{display:grid;gap:var(--space-2);min-width:0}
+.facts b{font-family:var(--font-display);font-weight:400;font-size:clamp(2.2rem,4vw,3.4rem);line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
+.facts span{font-size:var(--text-small);color:var(--ink-2)}
+.refs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-8);margin-bottom:var(--space-12)}
 .ref{display:grid;gap:var(--space-3);align-content:start;min-width:0}
-.ref .ph{aspect-ratio:3/2}
-.ref:nth-child(2){margin-top:var(--space-10)}
-.ref h3{font-size:1.25rem}
-.logos{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:var(--space-2);background:var(--surface);padding:var(--space-2)}
-.logos .ph{aspect-ratio:5/3;border-style:solid;border-color:var(--surface);background:var(--bg);font-size:.65rem}
+.ref .frame{aspect-ratio:3/2;transition:transform 500ms var(--ease)}
+.ref .frame img{transition:transform 900ms var(--ease)}
+.ref:hover .frame img{transform:scale(1.03)}
+.ref:nth-child(2){margin-top:var(--space-12)}
+.ref h3{font-size:1.35rem}
+.logos{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.logos li{background:var(--bg);aspect-ratio:5/3;display:grid;place-items:center;text-align:center;padding:var(--space-4);font-family:var(--font-mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--placeholder-ink);transition:background-color var(--dur) var(--ease)}
+.logos li:hover{background:var(--surface)}
 @media (max-width:900px){
+  .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
   .refs{grid-template-columns:minmax(0,1fr)}
   .ref:nth-child(2){margin-top:0}
   .logos{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -215,14 +267,16 @@ img{max-width:100%;height:auto;display:block}
 
 /* credentials */
 .creds .shell{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,96px)}
-.cred-group{display:grid;gap:var(--space-4);align-content:start}
-.cred-group .label{padding-bottom:var(--space-2);border-bottom:1px solid var(--gold)}
-.cred-list li{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:var(--space-4);padding-block:var(--space-3);border-bottom:1px solid var(--line);font-size:var(--text-small)}
+.cred-group{display:grid;gap:var(--space-6);align-content:start}
+.cred-group h2{font-size:clamp(1.8rem,3vw,2.6rem)}
+.cred-list li{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:var(--space-4);padding-block:var(--space-4);border-bottom:1px solid var(--line);font-size:var(--text-small);transition:padding-left var(--dur) var(--ease)}
+.cred-list li:hover{padding-left:var(--space-2)}
 .cred-list li b{font-weight:700}
 .cred-list li span{color:var(--ink-2)}
-.partners{margin-top:var(--space-10);display:grid;gap:var(--space-4)}
-.partner-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--space-2)}
-.partner-row .ph{aspect-ratio:5/3;font-size:.65rem}
+.partners{margin-top:var(--space-12);display:grid;gap:var(--space-6);grid-column:1/-1;padding-top:var(--space-10);border-top:1px solid var(--gold)}
+.partner-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.partner-row li{background:var(--bg);aspect-ratio:5/3;display:grid;place-items:center;text-align:center;padding:var(--space-4);font-family:var(--font-mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--placeholder-ink);transition:background-color var(--dur) var(--ease)}
+.partner-row li:hover{background:var(--surface)}
 @media (max-width:900px){
   .creds .shell{grid-template-columns:minmax(0,1fr)}
   .partner-row{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -230,27 +284,28 @@ img{max-width:100%;height:auto;display:block}
 }
 
 /* contact band */
-.contact{background:var(--navy);color:var(--ivory-on-navy);padding-block:var(--space-section)}
+.contact{padding-block:var(--space-section);overflow:clip}
+.contact .globe{left:-18vw;bottom:-30vw;width:min(70vw,800px);opacity:.18}
 .contact .shell{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(32px,5vw,96px);align-items:start}
-.contact .label{color:var(--stone-on-navy)}
-.contact .lede{color:var(--stone-on-navy)}
-.contact-copy{display:grid;gap:var(--space-6);max-width:26ch}
+.contact-copy{display:grid;gap:var(--space-6);max-width:28ch}
 .contact-copy .formula{color:var(--ivory-on-navy)}
+.contact-copy .formula b{color:var(--accent-lift)}
 .contact-meta{display:grid;gap:var(--space-4);font-size:var(--text-small);color:var(--stone-on-navy);border-top:1px solid var(--line-dark);padding-top:var(--space-6)}
 .contact-meta a{color:var(--ivory-on-navy)}
-.contact-meta .places{display:flex;gap:var(--space-4);flex-wrap:wrap;font-family:var(--font-mono);font-size:var(--text-label);letter-spacing:.08em;text-transform:uppercase}
-.form{display:grid;gap:var(--space-4)}
+.contact-meta .places{display:flex;gap:var(--space-4);flex-wrap:wrap;font-family:var(--font-mono);font-size:var(--text-label);letter-spacing:.1em;text-transform:uppercase}
+.form{display:grid;gap:var(--space-4);background:var(--navy-2);padding:clamp(20px,3vw,36px);border:1px solid var(--line-dark)}
 .form .row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--space-4)}
 .field{display:grid;gap:var(--space-2);min-width:0}
-.field label{font-family:var(--font-mono);font-size:var(--text-label);letter-spacing:.08em;text-transform:uppercase;color:var(--stone-on-navy)}
+.field label{font-family:var(--font-mono);font-size:var(--text-label);letter-spacing:.1em;text-transform:uppercase;color:var(--stone-on-navy)}
 .field input,.field select,.field textarea{
-  width:100%;box-sizing:border-box;background:var(--navy-2);color:var(--ivory-on-navy);
-  border:1px solid var(--line-dark);border-radius:2px;padding:12px 14px;
-  font-family:var(--font-body);font-size:1rem;line-height:1.3;
+  width:100%;box-sizing:border-box;background:var(--navy);color:var(--ivory-on-navy);
+  border:1px solid var(--line-dark);border-radius:2px;padding:13px 14px;
+  font-family:var(--font-body);font-size:1rem;line-height:1.3;transition:border-color var(--dur) var(--ease);
 }
-.field select{appearance:none}
+.field input:hover,.field select:hover,.field textarea:hover{border-color:var(--stone-on-navy)}
+.field select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8'><path d='M1 1l5 5 5-5' fill='none' stroke='%23c9c2b3' stroke-width='1.5'/></svg>");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
 .field textarea{min-height:120px;resize:vertical}
-.field input:focus-visible,.field select:focus-visible,.field textarea:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.field input:focus-visible,.field select:focus-visible,.field textarea:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-color:var(--gold)}
 .form .actions{display:flex;gap:var(--space-4);align-items:center;flex-wrap:wrap}
 .form .note{font-size:var(--text-small);color:var(--stone-on-navy)}
 @media (max-width:900px){
@@ -262,29 +317,39 @@ img{max-width:100%;height:auto;display:block}
 /* footer */
 .footer{background:var(--navy);color:var(--stone-on-navy);border-top:1px solid var(--line-dark);padding-block:var(--space-8)}
 .footer .shell{display:flex;justify-content:space-between;gap:var(--space-6);flex-wrap:wrap;align-items:center;font-size:var(--text-small)}
-.footer .wordmark{font-family:var(--font-display);font-size:1.25rem;color:var(--ivory-on-navy)}
+.footer .wordmark{font-family:var(--font-display);font-size:1.35rem;color:var(--ivory-on-navy)}
 .footer a{color:var(--ivory-on-navy)}
-.footer .places{font-family:var(--font-mono);font-size:var(--text-label);letter-spacing:.08em;text-transform:uppercase}
+.footer .places{font-family:var(--font-mono);font-size:var(--text-label);letter-spacing:.1em;text-transform:uppercase}
 
 /* ---------- motion: smooth & premium ---------- */
-/* Budget: (1) hero — load sequence + soft parallax; (2) section reveals. Inertia scroll is structural. */
+/* Budget: (1) hero — load sequence + soft parallax; (2) section reveals + the globe line draw. Inertia scroll is structural. */
 @media (prefers-reduced-motion: no-preference){
-  .js .hero-copy > *{animation:rise 720ms var(--ease) both}
-  .js .hero-copy > :nth-child(1){animation-delay:60ms}
-  .js .hero-copy > :nth-child(2){animation-delay:140ms}
-  .js .hero-copy > :nth-child(3){animation-delay:240ms}
-  .js .hero-copy > :nth-child(4){animation-delay:320ms}
-  .js .hero-copy > :nth-child(5){animation-delay:400ms}
-  .js .hero-media{animation:settle 1100ms var(--ease) both;animation-delay:120ms}
-  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-  @keyframes settle{from{opacity:0;transform:scale(1.03)}to{opacity:1;transform:none}}
-  /* reveals: the .pre class is only added by JS to elements below the fold, so nothing is hidden at rest */
-  .reveal.pre{opacity:0;transform:translateY(22px)}
-  .reveal.in{opacity:1;transform:none;transition:opacity 700ms var(--ease),transform 700ms var(--ease)}
+  .js .hero-copy > *{animation:rise 800ms var(--ease) both}
+  .js .hero-copy > :nth-child(1){animation-delay:80ms}
+  .js .hero-copy > :nth-child(2){animation-delay:160ms}
+  .js .hero-copy > :nth-child(3){animation-delay:280ms}
+  .js .hero-copy > :nth-child(4){animation-delay:380ms}
+  .js .hero-copy > :nth-child(5){animation-delay:460ms}
+  .js .hero-media .frame{animation:unveil 1200ms var(--ease) both;animation-delay:200ms}
+  .js .hero-media .frame img{animation:settle 1600ms var(--ease) both;animation-delay:200ms}
+  .js .hero-band{animation:rise 800ms var(--ease) both;animation-delay:600ms}
+  @keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+  @keyframes settle{from{transform:scale(1.06)}to{transform:none}}
+  @keyframes unveil{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 0 0)}}
+  .reveal.pre{opacity:0;transform:translateY(26px)}
+  .reveal.in{opacity:1;transform:none;transition:opacity 800ms var(--ease),transform 800ms var(--ease)}
+  .reveal.in .stagger > *{animation:rise 700ms var(--ease) both}
+  .reveal.in .stagger > :nth-child(2){animation-delay:80ms}
+  .reveal.in .stagger > :nth-child(3){animation-delay:160ms}
+  .reveal.in .stagger > :nth-child(4){animation-delay:240ms}
+  .reveal.in .stagger > :nth-child(5){animation-delay:320ms}
+  .reveal.in .stagger > :nth-child(6){animation-delay:400ms}
+  .magnet{will-change:transform;transition:transform 260ms var(--ease)}
 }
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation:none !important;transition:none !important}
-  html.lenis{scroll-behavior:auto}
+  .globe.draw path,.globe.draw circle,.globe.draw ellipse{stroke-dashoffset:0}
+  .cap .arrow{opacity:1;transform:none}
 }
 html.lenis,html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto !important}
@@ -294,19 +359,35 @@ html.lenis,html.lenis body{height:auto}
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="globe" viewBox="0 0 400 400">
+    <circle cx="200" cy="200" r="190"/>
+    <ellipse cx="200" cy="200" rx="120" ry="190"/>
+    <ellipse cx="200" cy="200" rx="48" ry="190"/>
+    <path d="M200 10 v380"/>
+    <path d="M10 200 h380"/>
+    <path d="M30 120 Q200 60 370 120"/>
+    <path d="M30 280 Q200 340 370 280"/>
+    <path d="M14 160 Q200 110 386 160"/>
+    <path d="M14 240 Q200 290 386 240"/>
+    <path d="M60 70 Q200 -10 340 70"/>
+    <path d="M60 330 Q200 410 340 330"/>
+  </symbol>
+</svg>
+
 <header class="nav" id="nav">
   <div class="shell">
     <a class="brand" href="#top" aria-label="Global GES, home"><img src="assets/logo.png" alt="GES, Global Experts Services" width="1160" height="675"></a>
     <nav class="nav-links" id="navLinks" aria-label="Primary">
       <a href="#approach">Approach</a>
+      <a href="#how">Delivery</a>
       <a href="#capabilities">Capabilities</a>
       <a href="#clients">Clients</a>
       <a href="#credentials">Credentials</a>
-      <a href="#contact">Contact</a>
     </nav>
     <div class="nav-actions">
       <a class="btn btn-secondary" href="assets/GES-Company-Profile.pdf">Company profile</a>
-      <a class="btn btn-primary" href="#contact">Contact GES</a>
+      <a class="btn btn-primary magnet" href="#contact">Contact GES <span class="arrow">→</span></a>
       <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
     </div>
   </div>
@@ -318,11 +399,11 @@ html.lenis,html.lenis body{height:auto}
   <section class="hero" id="top">
     <div class="shell">
       <div class="hero-copy">
-        <p class="label">Global GES · Consulting · Technology · Delivery</p>
-        <h1>Technology alone is never the answer.</h1>
-        <p class="lede">Global GES works alongside government and enterprise teams across the Middle East to bring people, process and technology into one accountable programme. Transformation that is practical, end to end, and owned by the people who have to live with it.</p>
+        <p class="label accent">Global GES · Consulting · Technology · Delivery</p>
+        <h1>Technology alone is never <em>the answer.</em></h1>
+        <p class="lede">Global GES works alongside government and enterprise teams across the Middle East to bring people, process and technology into one accountable programme. Practical, end to end, and owned by the people who have to live with it.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#contact">Discuss a requirement</a>
+          <a class="btn btn-primary magnet" href="#contact">Discuss a requirement <span class="arrow">→</span></a>
           <a class="btn btn-secondary" href="assets/GES-Company-Profile.pdf">Download the profile</a>
         </div>
         <div class="hero-meta">
@@ -332,14 +413,25 @@ html.lenis,html.lenis body{height:auto}
       </div>
       <div class="hero-media">
         <div class="hero-media-inner" id="heroParallax">
-          <img class="hero-img" src="assets/hero-consulting.jpg" alt="A GES consulting team reviewing an architecture plan with a client's leadership around a table in a glass-walled office" width="1600" height="850" fetchpriority="high">
+          <figure class="frame" style="margin:0">
+            <img src="assets/hero-consulting.jpg" alt="A GES consulting team reviewing an architecture plan with a client's leadership around a table in a glass-walled office" width="1600" height="855" fetchpriority="high">
+          </figure>
+          <p class="hero-caption">GES consultants with a client's leadership team, Riyadh</p>
         </div>
+      </div>
+    </div>
+    <div class="hero-band">
+      <div class="shell">
+        <p><b>Advise</b><span>Direction, strategy and enterprise architecture.</span></p>
+        <p><b>Deliver</b><span>Implementation, integration and handover.</span></p>
+        <p><b>Operate</b><span>Managed services, support and continuous improvement.</span></p>
       </div>
     </div>
   </section>
 
   <!-- THE PROBLEM · formula moment -->
-  <section class="section problem reveal" id="approach">
+  <section class="section problem on-navy reveal" id="approach">
+    <svg class="globe draw" viewBox="0 0 400 400" aria-hidden="true"><use href="#globe"/></svg>
     <div class="shell">
       <div>
         <div class="section-head">
@@ -351,31 +443,31 @@ html.lenis,html.lenis body{height:auto}
       </div>
       <div>
         <p class="formula-big"><span>People</span><span><b>×</b> Process</span><span><b>×</b> Technology</span></p>
-        <ol class="three">
-          <li><h3>People</h3><p>The skills, ownership and confidence to make change last. Clear responsibilities, stakeholder involvement and practical training help teams understand the change and take ownership of it.</p></li>
-          <li><h3>Processes</h3><p>The structure that turns business priorities into consistent delivery. Governance, service management and consistent delivery practices connect individual activities to organisational priorities.</p></li>
-          <li><h3>Technology</h3><p>The systems and infrastructure that support the way you work. Architecture, platforms and infrastructure should support how an organisation works, integrates, protects its information and evolves.</p></li>
+        <ol class="three stagger">
+          <li><p class="label">01 · Enable</p><h3>People</h3><p>The skills, ownership and confidence to make change last. Clear responsibilities, stakeholder involvement and practical training help teams take ownership of the change.</p></li>
+          <li><p class="label">02 · Align</p><h3>Processes</h3><p>The structure that turns business priorities into consistent delivery. Governance, service management and consistent delivery practices connect activity to organisational priorities.</p></li>
+          <li><p class="label">03 · Connect</p><h3>Technology</h3><p>The systems and infrastructure that support the way you work. Architecture, platforms and infrastructure should support how an organisation works, integrates, protects its information and evolves.</p></li>
         </ol>
       </div>
     </div>
   </section>
 
   <!-- HOW IT WORKS · the delivery journey -->
-  <section class="section journey reveal" id="how">
+  <section class="section journey stone reveal" id="how">
     <div class="shell">
       <div class="section-head">
-        <p class="label">The delivery journey</p>
+        <p class="label accent">The delivery journey</p>
         <h2>One continuous path. Shared accountability.</h2>
         <hr class="rule">
         <p class="muted">Every engagement has a different starting point. The delivery path connects assessment, planning and execution with the support needed afterwards.</p>
       </div>
-      <ol>
-        <li><h3>Assess</h3><p>Understand before you act. Review the current environment, business requirements, risks and opportunities for improvement.</p></li>
-        <li><h3>Strategise</h3><p>Agree the direction. Align technology priorities with business objectives and define the roadmap for change.</p></li>
-        <li><h3>Design</h3><p>Connect the details. Develop the architecture, processes and implementation plans that turn direction into a workable solution.</p></li>
-        <li><h3>Implement</h3><p>Put the plan into practice. Coordinate delivery, integration and project activities around the agreed scope.</p></li>
-        <li><h3>Operate</h3><p>Support the working environment. Provide the operational support, maintenance and monitoring relevant to the engagement.</p></li>
-        <li><h3>Optimise</h3><p>Keep improving. Review performance and changing needs to identify where the environment can be refined.</p></li>
+      <ol class="stagger">
+        <li><p class="num">01</p><h3>Assess</h3><p>Understand before you act. Review the current environment, business requirements, risks and opportunities.</p></li>
+        <li><p class="num">02</p><h3>Strategise</h3><p>Agree the direction. Align technology priorities with business objectives and define the roadmap for change.</p></li>
+        <li><p class="num">03</p><h3>Design</h3><p>Connect the details. Develop the architecture, processes and plans that turn direction into a workable solution.</p></li>
+        <li><p class="num">04</p><h3>Implement</h3><p>Put the plan into practice. Coordinate delivery, integration and project activities around the agreed scope.</p></li>
+        <li><p class="num">05</p><h3>Operate</h3><p>Support the working environment. Operational support, maintenance and monitoring relevant to the engagement.</p></li>
+        <li><p class="num">06</p><h3>Optimise</h3><p>Keep improving. Review performance and changing needs to identify where the environment can be refined.</p></li>
       </ol>
     </div>
   </section>
@@ -384,28 +476,36 @@ html.lenis,html.lenis body{height:auto}
   <section class="section caps reveal" id="capabilities">
     <div class="shell">
       <div class="section-head">
-        <p class="label">Our capabilities</p>
+        <p class="label accent">Our capabilities</p>
         <h2>Connected expertise. From direction to delivery.</h2>
         <hr class="rule">
-        <p class="muted">Explore the capabilities that connect your business priorities with your technology environment.</p>
-        <p class="caps-more"><a class="link" href="#services-page">Explore the full service portfolio</a> <span class="ph-copy label">(services page — later step)</span></p>
+        <p class="muted">The capabilities that connect your business priorities with your technology environment.</p>
+        <p class="caps-more"><a class="link" href="#services-page">Explore the full service portfolio</a></p>
       </div>
       <ul class="cap-list">
         <li class="cap">
+          <p class="num">01</p>
           <div><h3>Consulting &amp; Transformation</h3><p class="tags">Project Management Consultation · IT Strategy &amp; Planning · Enterprise Architecture</p></div>
           <div><p class="claim">Set a clear direction for change.</p><p>Define priorities, plan delivery and align technology decisions with your organisation's needs.</p></div>
+          <span class="arrow" aria-hidden="true">→</span>
         </li>
         <li class="cap">
+          <p class="num">02</p>
           <div><h3>Security &amp; Governance</h3><p class="tags">Cybersecurity Consultation · Information Security · Governance, Risk &amp; Compliance</p></div>
           <div><p class="claim">Build confidence into your operations.</p><p>Assess risks, strengthen controls and establish the frameworks that protect critical information and operations.</p></div>
+          <span class="arrow" aria-hidden="true">→</span>
         </li>
         <li class="cap">
+          <p class="num">03</p>
           <div><h3>Data &amp; Enterprise Technology</h3><p class="tags">Data Management · Cloud Services · Infrastructure &amp; Data Centres</p></div>
           <div><p class="claim">Connect the digital foundation.</p><p>Bring the platforms, infrastructure and data capabilities together to support enterprise operations.</p></div>
+          <span class="arrow" aria-hidden="true">→</span>
         </li>
         <li class="cap">
+          <p class="num">04</p>
           <div><h3>Service Management &amp; Operations</h3><p class="tags">IT Service Management · Managed Services · Training</p></div>
           <div><p class="claim">Make technology work every day.</p><p>Connect service delivery, ongoing support and capability development to sustain the working environment.</p></div>
+          <span class="arrow" aria-hidden="true">→</span>
         </li>
       </ul>
     </div>
@@ -415,53 +515,48 @@ html.lenis,html.lenis body{height:auto}
   <section class="section proof reveal" id="clients">
     <div class="shell">
       <div class="section-head">
-        <p class="label">Selected references</p>
+        <p class="label accent">Selected references</p>
         <h2>Enterprise environments. Real-world responsibility.</h2>
         <hr class="rule">
       </div>
-      <p class="facts"><span><b>14+</b> years of delivery</span><span><b>10</b> specialised practices</span><span><b>24/7</b> managed operations</span><span><b>5</b> regional hubs</span></p>
+      <ul class="facts stagger">
+        <li><b>14+</b><span>years of operational and consulting delivery</span></li>
+        <li><b>10</b><span>specialised technology and engineering practices</span></li>
+        <li><b>24/7</b><span>technical support and managed operations</span></li>
+        <li><b>5</b><span>regional hubs across Europe and the Middle East</span></li>
+      </ul>
       <ul class="refs">
         <li class="ref">
-          <div class="ph" role="img" aria-label="Placeholder: reference image"><span>reference — Alinma Bank engagement, banking floor or head office interior</span></div>
+          <div class="frame"><p class="ph"><span>image — banking headquarters atrium, Riyadh</span></p></div>
           <p class="label">Banking &amp; Finance · Saudi Arabia</p>
           <h3>Alinma Bank</h3>
-          <p class="muted ph-copy">Placeholder: one line on the engagement and the outcome. Real copy in Step 3.</p>
+          <p class="muted ph-copy">One line on the engagement and the outcome.</p>
         </li>
         <li class="ref">
-          <div class="ph" role="img" aria-label="Placeholder: reference image"><span>reference — King Fahad Medical City, hospital campus in daylight</span></div>
+          <div class="frame"><p class="ph"><span>image — hospital campus walkway, early morning</span></p></div>
           <p class="label">Healthcare · Saudi Arabia</p>
           <h3>King Fahad Medical City</h3>
-          <p class="muted ph-copy">Placeholder: one line on the engagement and the outcome. Real copy in Step 3.</p>
+          <p class="muted ph-copy">One line on the engagement and the outcome.</p>
         </li>
         <li class="ref">
-          <div class="ph" role="img" aria-label="Placeholder: reference image"><span>reference — Ministry of Transport, Oman, transport infrastructure</span></div>
+          <div class="frame"><p class="ph"><span>image — coastal transport infrastructure, Oman, dawn</span></p></div>
           <p class="label">Government · Oman</p>
           <h3>Ministry of Transport</h3>
-          <p class="muted ph-copy">Placeholder: one line on the engagement and the outcome. Real copy in Step 3.</p>
+          <p class="muted ph-copy">One line on the engagement and the outcome.</p>
         </li>
       </ul>
-      <ul class="logos" aria-label="Client logos (placeholders)">
-        <li class="ph"><span>logo — STC</span></li>
-        <li class="ph"><span>logo — Mobily</span></li>
-        <li class="ph"><span>logo — Riyad Bank</span></li>
-        <li class="ph"><span>logo — Saudi Electricity Co.</span></li>
-        <li class="ph"><span>logo — KAUST</span></li>
-        <li class="ph"><span>logo — Tadawul</span></li>
-        <li class="ph"><span>logo — Zakat Authority</span></li>
-        <li class="ph"><span>logo — Arab Bank</span></li>
-        <li class="ph"><span>logo — Saudi National Guard</span></li>
-        <li class="ph"><span>logo — Nazaha</span></li>
-        <li class="ph"><span>logo — Zain</span></li>
-        <li class="ph"><span>logo — Capital Market Authority</span></li>
+      <ul class="logos" aria-label="Clients">
+        <li>STC</li><li>Mobily</li><li>Riyad Bank</li><li>Saudi Electricity Co.</li><li>KAUST</li><li>Tadawul</li>
+        <li>Zakat Authority</li><li>Arab Bank</li><li>Saudi National Guard</li><li>Nazaha</li><li>Zain</li><li>Capital Market Authority</li>
       </ul>
     </div>
   </section>
 
   <!-- CREDENTIALS -->
-  <section class="section creds reveal" id="credentials">
+  <section class="section creds stone reveal" id="credentials">
     <div class="shell">
       <div class="cred-group">
-        <p class="label">Organisational credentials</p>
+        <p class="label accent">Organisational credentials</p>
         <h2>Defined processes. Auditable controls.</h2>
         <ul class="cred-list">
           <li><b>CMMI Services</b><span>Maturity Level 3</span></li>
@@ -473,7 +568,7 @@ html.lenis,html.lenis body{height:auto}
         </ul>
       </div>
       <div class="cred-group">
-        <p class="label">Certified professional expertise</p>
+        <p class="label accent">Certified professional expertise</p>
         <h2>Certified specialists. Hands-on delivery.</h2>
         <ul class="cred-list">
           <li><b>Lead &amp; govern</b><span>PMP · PgMP · PRINCE2 · COBIT 2019 · TOGAF</span></li>
@@ -482,19 +577,11 @@ html.lenis,html.lenis body{height:auto}
           <li><b>Improve &amp; manage data</b><span>Lean Six Sigma Black Belt · CDMP Master · PSM III</span></li>
         </ul>
       </div>
-      <div class="partners" style="grid-column:1/-1">
+      <div class="partners">
         <p class="label">Technology partners</p>
-        <ul class="partner-row" aria-label="Partner logos (placeholders)">
-          <li class="ph"><span>logo — Alemba (exclusive partner)</span></li>
-          <li class="ph"><span>logo — Collibra</span></li>
-          <li class="ph"><span>logo — NAVEX</span></li>
-          <li class="ph"><span>logo — MetricStream</span></li>
-          <li class="ph"><span>logo — Lansweeper</span></li>
-          <li class="ph"><span>logo — Omnissa</span></li>
-          <li class="ph"><span>logo — Avolution</span></li>
-          <li class="ph"><span>logo — Run2Biz</span></li>
-          <li class="ph"><span>logo — Simpliix</span></li>
-          <li class="ph"><span>logo — Citsmart Central</span></li>
+        <ul class="partner-row" aria-label="Partners">
+          <li>Alemba · exclusive partner</li><li>Collibra</li><li>NAVEX</li><li>MetricStream</li><li>Lansweeper</li>
+          <li>Omnissa</li><li>Avolution</li><li>Run2Biz</li><li>Simpliix</li><li>Citsmart Central</li>
         </ul>
       </div>
     </div>
@@ -502,6 +589,7 @@ html.lenis,html.lenis body{height:auto}
 
   <!-- CONTACT BAND -->
   <section class="contact on-navy reveal" id="contact">
+    <svg class="globe" viewBox="0 0 400 400" aria-hidden="true"><use href="#globe"/></svg>
     <div class="shell">
       <div class="contact-copy">
         <p class="label">Start a conversation</p>
@@ -535,7 +623,7 @@ html.lenis,html.lenis body{height:auto}
         </div>
         <div class="field"><label for="f-msg">Message</label><textarea id="f-msg" name="body"></textarea></div>
         <div class="actions">
-          <button class="btn btn-primary" type="submit">Discuss a requirement</button>
+          <button class="btn btn-primary magnet" type="submit">Discuss a requirement <span class="arrow">→</span></button>
           <p class="note">Opens a draft to info@globalges.net until the form has a backend.</p>
         </div>
       </form>
@@ -558,8 +646,9 @@ html.lenis,html.lenis body{height:auto}
 (function(){
   'use strict';
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-  /* nav toggle */
+  /* nav */
   var nav = document.getElementById('nav'), toggle = document.getElementById('navToggle');
   toggle.addEventListener('click', function(){
     var open = !nav.classList.contains('open');
@@ -568,8 +657,9 @@ html.lenis,html.lenis body{height:auto}
     toggle.textContent = open ? 'Close' : 'Menu';
   });
   nav.querySelectorAll('.nav-links a').forEach(function(a){ a.addEventListener('click', function(){ nav.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); toggle.textContent='Menu'; }); });
+  var setScrolled = function(y){ nav.classList.toggle('scrolled', y > 24); };
 
-  /* inertia scroll (structural) — falls back to native scroll if Lenis is missing */
+  /* inertia scroll (structural) — native scroll if Lenis is missing */
   var lenis = null;
   if (!reduce && window.Lenis) {
     lenis = new Lenis({ lerp: 0.09, smoothWheel: true });
@@ -578,29 +668,53 @@ html.lenis,html.lenis body{height:auto}
       a.addEventListener('click', function(e){
         var id = a.getAttribute('href'); if (id.length < 2) return;
         var el = document.querySelector(id); if (!el) return;
-        e.preventDefault(); lenis.scrollTo(el, { offset: -72 }); el.setAttribute('tabindex','-1'); el.focus({ preventScroll: true });
+        e.preventDefault(); lenis.scrollTo(el, { offset: -64 }); el.setAttribute('tabindex','-1'); el.focus({ preventScroll: true });
       });
     });
   }
 
-  /* hero: soft parallax, transform only */
+  /* hero: soft parallax, transform only, desktop only */
   var hero = document.getElementById('heroParallax');
-  if (!reduce && hero) {
-    var fine = window.matchMedia('(min-width: 761px)');
-    var onScroll = function(y){ if (!fine.matches) { hero.style.transform=''; return; } if (y < 1200) hero.style.transform = 'translate3d(0,' + (y * -0.12).toFixed(1) + 'px,0)'; };
-    if (lenis) lenis.on('scroll', function(e){ onScroll(e.scroll); });
-    else window.addEventListener('scroll', function(){ onScroll(window.scrollY); }, { passive: true });
-  }
+  var wide = window.matchMedia('(min-width: 861px)');
+  var onScroll = function(y){
+    setScrolled(y);
+    if (reduce || !hero) return;
+    if (!wide.matches) { hero.style.transform = ''; return; }
+    if (y < 1400) hero.style.transform = 'translate3d(0,' + (y * -0.1).toFixed(1) + 'px,0)';
+  };
+  if (lenis) lenis.on('scroll', function(e){ onScroll(e.scroll); });
+  else window.addEventListener('scroll', function(){ onScroll(window.scrollY); }, { passive: true });
+  onScroll(window.scrollY);
 
-  /* reveals: only elements below the fold get the pre state, so nothing is hidden at rest */
+  /* reveals: only sections below the fold get the pre state, so nothing is hidden at rest */
   var els = document.querySelectorAll('.reveal');
   if (!reduce && 'IntersectionObserver' in window) {
     var vh = window.innerHeight;
     els.forEach(function(el){ if (el.getBoundingClientRect().top > vh * 0.9) el.classList.add('pre'); });
     var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){ if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
-    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
-    els.forEach(function(el){ if (el.classList.contains('pre')) io.observe(el); });
+      entries.forEach(function(en){
+        if (!en.isIntersecting) return;
+        en.target.classList.add('in');
+        var g = en.target.querySelector('.globe'); if (g) g.classList.add('in');
+        io.unobserve(en.target);
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.05 });
+    els.forEach(function(el){ if (el.classList.contains('pre')) io.observe(el); else { el.classList.add('in'); var g = el.querySelector('.globe'); if (g) g.classList.add('in'); } });
+  } else {
+    document.querySelectorAll('.globe').forEach(function(g){ g.classList.remove('draw'); });
+  }
+
+  /* magnetic primary buttons: subtle, desktop pointer only */
+  if (!reduce && finePointer) {
+    document.querySelectorAll('.magnet').forEach(function(btn){
+      btn.addEventListener('mousemove', function(e){
+        var r = btn.getBoundingClientRect();
+        var dx = (e.clientX - (r.left + r.width / 2)) / r.width;
+        var dy = (e.clientY - (r.top + r.height / 2)) / r.height;
+        btn.style.transform = 'translate(' + (dx * 6).toFixed(1) + 'px,' + (dy * 4).toFixed(1) + 'px)';
+      });
+      btn.addEventListener('mouseleave', function(){ btn.style.transform = ''; });
+    });
   }
 })();
 </script>
