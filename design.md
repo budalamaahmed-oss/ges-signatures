@@ -13,6 +13,16 @@ Source of truth for every later build step. Direction chosen: **Daylight Stone**
 - **Positioning:** established, capable, international, premium, enterprise-focused. A consultancy, not a software product.
 - **Tone:** editorial and plain. Say the true thing in few words. Confident without hype.
 
+## Site structure & files
+
+Multi-page corporate site, built sequentially per the master brief: Home → About Us → Services → Solutions & Partners → Projects → Contact.
+
+- `styles.css` holds every token and component. Pages never restate tokens. `script.js` holds all motion and interaction and degrades to a still, readable page.
+- Pages: `index.html` (home), `about.html`, `services.html`, `solutions.html`, `projects.html`, `contact.html`. Nav marks the current page with `aria-current="page"`.
+- Assets: `assets/logo.png`, `assets/logo-mark.png`, `assets/hero-consulting.jpg`, `assets/clients/` (real logos), `assets/GES-Company-Profile.pdf`, `assets/image-brief.md` (prompts for images still to make).
+- Homepage architecture (approved order): Hero → Introduction → People × Processes × Technology (sticky diagram) → Capabilities → Why GES → Transformation lifecycle → Technology ecosystem → Selected projects → Clients & trust → Regional presence → Final CTA → Footer.
+- Grounds in that order: ivory → cream strip → ivory → navy → white → stone → near-black → ivory → white → stone → navy → navy (with a gold rule between presence and CTA) → near-black footer.
+
 ## Audience & the one job
 
 - **Audience:** decision-makers and technical leads in government organisations, enterprises, banks, telecoms, healthcare, transport and energy across the Middle East and wider region.
@@ -76,12 +86,13 @@ Don't: italic headings. Bold serif. Serif for body text. Inter anywhere. Gradien
 
 ## Signature element
 
-**The formula.** `People × Process × Technology` set in Space Mono with the × in GES blue (lifted blue on navy). It appears small in the hero, large as the centrepiece of the navy philosophy panel, and again beside the contact form. Related moves: a single gold hairline under section headings; every image sits in a `.frame` with a 12px-inset gold hairline; the wireframe globe from the logo (`#globe` symbol in index.html) drawn large and cropped in gold hairline at low opacity on the navy panels, with a stroke-draw animation on reveal; film grain at 5% over the whole page.
+**The formula and the intersection diagram.** `People × Process × Technology` set in Space Mono with the × in GES blue (lifted blue on navy). Its visual form is the intersection diagram: three overlapping rings (People, Processes, Technology) with the triple intersection filled in GES blue and labelled Transformation. The diagram draws itself in the hero and drives the sticky philosophy section, where scrolling through the three chapters lights each ring in turn and the final chapter fills the core. The formula also appears in the lifecycle foot and beside the final CTA. Related moves: a single gold hairline under section headings; every image sits in a `.frame` with a 12px-inset gold hairline; the wireframe globe from the logo (`#globe` symbol in index.html) drawn large and cropped in gold hairline at low opacity on the navy panels, with a stroke-draw animation on reveal; film grain at 5% over the whole page.
 
 ## Motion
 
 Style chosen in Step 2: **Smooth & premium** (inertia scrolling, a soft parallax on the hero, clean reveals).
 
+- **Scroll storytelling:** the philosophy section is sticky-driven (chapters set `data-stage` 1–4 on the section, which lights rings, labels and formula words); the lifecycle sets a `--progress` custom property from its scroll position, filling a blue line along the six stages and activating each in turn. Both resolve to their complete state under reduced motion or without JavaScript.
 - **Structural:** inertia scrolling via Lenis (`lerp` 0.09), loaded from a pinned CDN and falling back to native scroll if it fails to load. Anchor links scroll through Lenis with a 72px header offset and move focus to the target.
 - **Hero (primitive 1):** a one-time load sequence, each line of the hero rising 18px and fading in over 720ms with a 60 to 400ms stagger; the hero image settles from a 1.03 scale over 1100ms. Then a soft parallax on the hero image, moving at 0.12 of scroll speed, transform only, desktop only, stopped after 1200px.
 - **Reveals (primitive 2):** sections rise 22px and fade in over 700ms as they enter the viewport. The hidden state is applied by JavaScript only to sections below the fold at load, so the page is fully visible at rest without JavaScript, above the fold, and in thumbnails. Each section reveals once.
@@ -90,6 +101,9 @@ Style chosen in Step 2: **Smooth & premium** (inertia scrolling, a soft parallax
 - `prefers-reduced-motion: reduce` disables Lenis, the load sequence, the parallax, the reveals, the globe draw and the magnetic buttons, and collapses all transitions to 0ms.
 
 ## Components
+
+Reusable primitives in `styles.css` (all support more than one composition): header and nav (`.nav`, mobile menu is a full-width navy list in the serif), hero, section header (`.section-head`, `.wide` variant), statement block (`.statement`), capability row (`.cap`), project card (`.project`, editorial spans), partner identity (`.partner`, typographic, `.lead` for the exclusive partner), lifecycle (`.lifecycle` with scroll progress), technical diagram (`.diagram`, `.eco-flow`), image frame (`.frame`, `.grid` placeholder, `.unveil`), facts (`.intro-facts`, `.count`), logo field (`.logo-field`), meridian presence strip (`.meridian`, list fallback on mobile), CTA band (`.cta`), footer. Grounds: `.stone`, `.cream`, `.white`, `.on-navy`, `.on-black`.
+
 
 - **Primary button:** accent fill, ivory text, 2px radius, mono label at 0.85rem. Hover to `--accent-2`. Focus ring 2px `--focus`, 3px offset, never animated. States: default, hover, focus, active, disabled (surface fill, muted text).
 - **Secondary button:** no fill, 1px `--ink` border, ink text. Same states.
