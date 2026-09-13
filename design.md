@@ -1,6 +1,6 @@
 # Global GES — Design System
 
-Source of truth for every later build step. Direction chosen: **Daylight Stone** (Step 1, 2026-09-13), with the display face changed from Space Mono to a sharp editorial serif at the client's request.
+Source of truth for every later build step. Direction chosen: **Daylight Stone** (Step 1, 2026-09-13), with the display face changed from Space Mono to IBM Plex Serif at the client's request.
 
 ---
 
@@ -41,13 +41,13 @@ Don't: introduce a second saturated colour. Don't use the current site's brighte
 
 ## Type
 
-- **Display:** Instrument Serif (Google Fonts), weight 400, roman only. Fallback stack: Georgia, "Times New Roman", serif. Chosen as a Google-hosted stand-in for Nyght Serif; if Nyght Serif files are supplied later, self-host them in `assets/fonts/` and swap the token only.
+- **Display:** IBM Plex Serif (Google Fonts), weight 400 for display sizes, 500 for h3 and smaller, roman only. Fallback stack: Georgia, "Times New Roman", serif. Chosen by the client over Instrument Serif. A transitional serif with a slightly technical edge, which suits a technology consultancy better than a fashion-editorial face.
 - **Body:** Atkinson Hyperlegible, 400 and 700. Fallback: "Segoe UI", Arial, sans-serif.
 - **Utility:** Space Mono, 400 and 700. Labels, eyebrows, numerals, metadata, the formula. Tracked caps at small sizes (`letter-spacing: .12em`).
 
 Tokens:
 ```
---font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
+--font-display: "IBM Plex Serif", Georgia, "Times New Roman", serif;
 --font-body: "Atkinson Hyperlegible", "Segoe UI", Arial, sans-serif;
 --font-mono: "Space Mono", ui-monospace, "Courier New", monospace;
 ```
@@ -139,7 +139,7 @@ Avoid: the blue neon data-centre aisle from the current site, circuit boards, fu
 
 ## References
 
-- Current site (`globalges.net`, LEAP 2026 build): keep its paper, navy and gold tokens; keep its editorial section rhythm; replace Georgia with Instrument Serif and Arial with Atkinson Hyperlegible.
+- Current site (`globalges.net`, LEAP 2026 build): keep its paper, navy and gold tokens; keep its editorial section rhythm; replace Georgia with IBM Plex Serif and Arial with Atkinson Hyperlegible.
 - Company profile PDF for wording, services, partners and certifications.
-- Nyght Serif as the display-face reference the client named.
+- Nyght Serif was the reference the client first named; IBM Plex Serif was the final choice.
 - Client's scene: a consulting team with a client's leadership around a table in a warm stone-and-glass interior.
