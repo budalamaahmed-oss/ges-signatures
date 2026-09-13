@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Global GES</title>
+<meta name="description" content="Global GES is a technology solutions and consulting company. People, process and technology, brought together for practical, end-to-end transformation.">
+<link rel="icon" href="assets/logo-mark.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Atkinson+Hyperlegible:wght@400;700&family=Space+Mono:wght@400;700&display=swap">
+<style>
+/* Global GES · Step 1 · Direction: Daylight Stone · display: Instrument Serif · accent hue 256 */
+:root{
+  --bg: oklch(96% 0.012 90);
+  --ink: oklch(24% 0.04 250);
+  --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --font-body: "Atkinson Hyperlegible", "Segoe UI", Arial, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, "Courier New", monospace;
+  --text-display: clamp(2.6rem, 6.5vw, 5.2rem);
+  --text-lede: clamp(1.125rem, 1.6vw, 1.35rem);
+  --space-4: 16px; --space-6: 24px; --space-8: 32px; --space-12: 96px;
+}
+html,body{overflow-x:clip}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:1.0625rem;
+  line-height:1.55;
+  padding-inline:clamp(16px,4vw,48px);
+  padding-block:var(--space-8) var(--space-12);
+  -webkit-font-smoothing:antialiased;
+}
+main{max-width:1240px;margin:0 auto;display:grid;gap:clamp(48px,8vw,112px)}
+.brand{display:flex;align-items:center;gap:var(--space-4)}
+.brand img{height:56px;width:auto;display:block}
+.hero{display:grid;gap:var(--space-6);max-width:22ch}
+h1{
+  font-family:var(--font-display);
+  font-weight:400;
+  font-style:normal;
+  font-size:var(--text-display);
+  line-height:1.02;
+  letter-spacing:-.01em;
+  margin:0;
+  text-wrap:balance;
+  overflow-wrap:anywhere;
+  min-width:0;
+}
+.lede{font-size:var(--text-lede);line-height:1.45;margin:0;max-width:34ch}
+.formula{font-family:var(--font-mono);font-size:.85rem;letter-spacing:.06em;margin:0}
+a{color:var(--ink)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+@media (prefers-reduced-motion: reduce){*{transition:none !important;animation:none !important}}
+</style>
+</head>
+<body>
+<main>
+  <header class="brand">
+    <img src="assets/logo.png" alt="GES, Global Experts Services" width="1160" height="675">
+  </header>
+  <section class="hero">
+    <h1>Technology alone is never the answer.</h1>
+    <p class="lede">Global GES works alongside government and enterprise teams across the Middle East to bring people, process and technology into one accountable programme. Transformation that is practical, end to end, and owned by the people who have to live with it.</p>
+    <p class="formula">People × Process × Technology</p>
+  </section>
+</main>
+</body>
+</html>
