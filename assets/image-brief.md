@@ -32,6 +32,20 @@ Every image follows the Assets plan in `design.md`: GES consultants with a clien
 - The blue neon data-centre image from the current site is not to be used anywhere.
 - No video slots on this page.
 
-## Projects page
+## Projects page — image cards
 
-Rebuilt from the company profile (2026-09-13). The page now has one featured engagement and three image cards, all with images in place, and a filterable text register of thirty engagements that needs no imagery. No further project images are required unless GES wants more image cards.
+The register is text and needs no imagery. These nine engagements will become image cards alongside the existing four (Eastern Health Cluster, Saudi Railway Company, Oromia Bank, Bustami & Saheb), making a twelve-card gallery. Same shared style line as above. All 3:2 horizontal, 1800×1200. Sector scenes, never a depiction of the named institution's real building or logo. Save into `assets/projects/` with these names.
+
+| # | Engagement | Filename | Prompt |
+|---|---|---|---|
+| 1 | Ministry of Industry & Mineral Resources · KSA | `assets/projects/ministry-of-industry.jpg` | Exterior of a modern government ministry in Riyadh at early morning: pale limestone facade with deep vertical fins, a wide stone forecourt, long soft shadows, two officials in thobes walking towards the entrance at a distance. Calm, orderly, institutional. |
+| 2 | National Transformation Program · KSA | `assets/projects/national-transformation-program.jpg` | A strategy workshop in a modern Riyadh boardroom: a long pale-oak table, printed roadmap sheets laid out end to end, six professionals in mixed Saudi and Western business attire standing around them in discussion, floor-to-ceiling glass and a travertine wall, soft daylight, no screens on. |
+| 3 | Saudi Credit Bureau (SIMAH) · KSA | `assets/projects/simah.jpg` | A quiet financial-services office interior: a glass-walled meeting room with frosted lower panels, a compliance officer in a dark abaya reviewing a bound audit report at a desk, stone floor, warm daylight, everything orderly and private. |
+| 4 | Diriyah Company · KSA | `assets/projects/diriyah.jpg` | A modern office interior that references Najdi architecture: mud-toned walls with triangular cut-outs, pale timber ceiling, a corridor with soft daylight, one person walking away in the distance. Heritage as setting, contemporary and clean. |
+| 5 | Riyadh Metro · KSA | `assets/projects/riyadh-metro.jpg` | Interior of a new metro station at early morning: a sweeping pale ceiling, stone platform, glass screen doors closed, a single train standing, almost empty, soft warm light, quiet and precise. |
+| 6 | Riyadh Airports · KSA | `assets/projects/riyadh-airports.jpg` | Airside view at an airport terminal at dawn: pale concrete pier, a covered walkway with slender columns, an aircraft tail in the distance, ground crew far away, hazy warm light. Infrastructure as setting. |
+| 7 | Roads & Transport Authority · UAE | `assets/projects/rta.jpg` | An elevated view of a modern Dubai highway interchange and a metro viaduct at dawn: pale concrete curves, sparse traffic, hazy skyline far behind, warm light. Calm and orderly. |
+| 8 | Basra Oil Group · Iraq | `assets/projects/basra-oil-group.jpg` | A project management office in an energy-sector headquarters: engineers at a large table with printed schedules and a Gantt chart on paper, hard hats set aside on a shelf, a window onto a distant pale industrial skyline at dawn, warm stone interior. |
+| 9 | CNN Türk · Türkiye | `assets/projects/cnn-turk.jpg` | Interior corridor of a modern broadcast facility in Istanbul: glass-walled control rooms with screens switched off, warm timber and stone, soft daylight from a clerestory, one engineer walking away from camera. Technical but quiet, no glowing screens. |
+
+Already in place: Eastern Health Cluster (`ref-healthcare.jpg`), Saudi Railway Company (`ref-transport.jpg`), Oromia Bank (`ref-banking.jpg`), Bustami & Saheb Group (`hero-consulting.jpg`).
