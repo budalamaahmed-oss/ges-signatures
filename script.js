@@ -121,6 +121,20 @@
     requestAnimationFrame(step);
   }
 
+  /* ---- scroll spy for sticky indexes (services) ---- */
+  var spyLinks = document.querySelectorAll('[data-spy] a[href^="#"]');
+  if (spyLinks.length) {
+    var targets = [];
+    spyLinks.forEach(function (a) { var t = document.querySelector(a.getAttribute('href')); if (t) targets.push([a, t]); });
+    var spy = function () {
+      var y = window.innerHeight * 0.35, current = null;
+      targets.forEach(function (pair) { if (pair[1].getBoundingClientRect().top <= y) current = pair; });
+      targets.forEach(function (pair) { if (pair === current) pair[0].setAttribute('aria-current', 'true'); else pair[0].removeAttribute('aria-current'); });
+    };
+    if (lenis) lenis.on('scroll', spy); else window.addEventListener('scroll', spy, { passive: true });
+    spy();
+  }
+
   /* ---- magnetic primary buttons: subtle, fine pointers only ---- */
   if (!reduce && finePointer) {
     document.querySelectorAll('.magnet').forEach(function (btn) {
