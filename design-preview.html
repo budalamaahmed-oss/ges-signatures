@@ -1,0 +1,178 @@
+<title>GES Design Directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Atkinson+Hyperlegible:wght@400;700&family=Atkinson+Hyperlegible+Mono:wght@400;700&display=swap">
+<style>
+/* Hallmark · pre-emit critique: P4 H4 E4 S5 R5 V4 */
+:root{
+  --page-bg: oklch(93% 0.012 90);
+  --page-ink: oklch(24% 0.04 250);
+  --page-mute: oklch(46% 0.03 250);
+  --page-line: oklch(80% 0.02 90);
+  --font-display: "Space Mono", ui-monospace, "Courier New", monospace;
+  --font-body: "Atkinson Hyperlegible", "Segoe UI", Arial, sans-serif;
+  --font-mono: "Atkinson Hyperlegible Mono", "Space Mono", ui-monospace, monospace;
+}
+html,body{overflow-x:clip}
+body{margin:0;background:var(--page-bg);color:var(--page-ink);font-family:var(--font-body);font-size:16px;line-height:1.5;padding-inline:clamp(16px,4vw,48px);padding-block:40px 64px}
+a{color:inherit}
+*:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.top{max-width:1240px;margin:0 auto 32px;display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+.top .kicker{font-family:var(--font-display);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--page-mute);margin:0}
+.top h1{font-family:var(--font-display);font-weight:700;font-size:clamp(1.4rem,3.2vw,2.2rem);line-height:1.15;letter-spacing:-.01em;margin:0;text-wrap:balance;max-width:26ch}
+.top p{margin:0;max-width:64ch;color:var(--page-mute)}
+.top .how{font-family:var(--font-mono);font-size:.9rem;color:var(--page-ink);border-top:1px solid var(--page-line);padding-top:12px;max-width:64ch}
+.dirs{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+@media (max-width:900px){.dirs{grid-template-columns:minmax(0,1fr)}}
+.dir{background:var(--bg);color:var(--ink);padding:28px 24px 32px;display:grid;gap:22px;align-content:start;border:1px solid var(--line);min-width:0}
+.dir header{display:grid;gap:8px}
+.dir .num{font-family:var(--font-display);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.dir .rec{font-family:var(--font-display);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;background:var(--accent);color:var(--bg);padding:4px 8px;border-radius:2px}
+.dir h2{font-family:var(--font-display);font-weight:700;font-size:1.35rem;line-height:1.15;margin:0;overflow-wrap:anywhere}
+.dir .why{margin:0;color:var(--mute);font-size:.95rem;max-width:44ch}
+.swatches{display:grid;gap:6px;margin:0;padding:0;list-style:none}
+.swatches li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:center;min-width:0}
+.swatches .chip{width:44px;height:44px;border-radius:3px;border:1px solid var(--line)}
+.swatches .role{font-family:var(--font-body);font-weight:700;font-size:.9rem;line-height:1.2}
+.swatches .val{font-family:var(--font-mono);font-size:.72rem;color:var(--mute);letter-spacing:.01em;overflow-wrap:anywhere}
+.type{display:grid;gap:14px;padding-top:18px;border-top:1px solid var(--line)}
+.type .label{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:0}
+.type .thesis{font-family:var(--font-display);font-weight:700;font-size:clamp(1.5rem,2.3vw,1.85rem);line-height:1.12;letter-spacing:-.015em;margin:0;text-wrap:balance;overflow-wrap:anywhere}
+.type .thesis b{color:var(--accent);font-weight:700}
+.type .sample{margin:0;font-size:1rem;line-height:1.55;max-width:44ch}
+.type .util{font-family:var(--font-util);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin:0;display:flex;gap:14px;flex-wrap:wrap}
+.type .util span{border-bottom:1px solid var(--rule)}
+.pairing{font-family:var(--font-mono);font-size:.75rem;color:var(--mute);margin:0;line-height:1.6}
+.formula{font-family:var(--font-display);font-size:.9rem;color:var(--accent);margin:0}
+.formula em{font-style:normal;color:var(--gold)}
+
+/* ---- Direction 1 · Daylight Stone (light, blue accent) ---- */
+.d1{
+  --bg: oklch(96% 0.012 90);
+  --surface: oklch(91.5% 0.015 88);
+  --ink: oklch(24% 0.04 250);
+  --mute: oklch(44% 0.035 250);
+  --accent: oklch(50% 0.135 256);
+  --navy: oklch(22% 0.05 250);
+  --gold: oklch(73% 0.072 84);
+  --line: oklch(84% 0.018 90);
+  --rule: var(--gold);
+  --font-util: var(--font-display);
+}
+/* ---- Direction 2 · Navy Boardroom (dark, lifted blue accent) ---- */
+.d2{
+  --bg: oklch(22% 0.05 250);
+  --surface: oklch(28% 0.055 248);
+  --ink: oklch(95% 0.012 90);
+  --mute: oklch(74% 0.022 85);
+  --accent: oklch(68% 0.155 250);
+  --navy: oklch(17% 0.04 250);
+  --gold: oklch(78% 0.085 84);
+  --line: oklch(36% 0.045 248);
+  --rule: var(--gold);
+  --font-util: var(--font-mono);
+}
+/* ---- Direction 3 · Gilt Ledger (warm light, gold accent, blue held back) ---- */
+.d3{
+  --bg: oklch(95% 0.018 85);
+  --surface: oklch(87% 0.028 82);
+  --ink: oklch(24% 0.015 75);
+  --mute: oklch(46% 0.02 75);
+  --accent: oklch(62% 0.125 78);
+  --navy: oklch(30% 0.05 250);
+  --gold: var(--accent);
+  --blue: oklch(48% 0.07 252);
+  --line: oklch(82% 0.025 82);
+  --rule: var(--navy);
+  --font-util: var(--font-body);
+}
+@media (prefers-reduced-motion: no-preference){ .dir{transition:transform 180ms cubic-bezier(.2,.7,.2,1)} }
+</style>
+
+<section class="top">
+  <p class="kicker">Global GES · Step 1 · Design direction</p>
+  <h1>Technology alone is never the answer.</h1>
+  <p>Three directions, all built from your scene (stone, glass, soft daylight, a team around a table) and your logo blue. Type is fixed as you asked: Space Mono for headings, Atkinson Hyperlegible for body. What changes is the ground, where the one saturated colour lives, and what the utility face is.</p>
+  <p class="how">Reply with 1, 2 or 3. If you don't choose, I'll go with the recommended one.</p>
+</section>
+
+<section class="dirs">
+
+  <article class="dir d1" aria-labelledby="d1h">
+    <header>
+      <p class="num"><span>Direction 1</span><span class="rec">Recommended</span></p>
+      <h2 id="d1h">Daylight Stone</h2>
+      <p class="why">The sunlit room from your scene, kept light. Your existing paper and gold carry over; the blue is the logo's own blue (deepened from the current web blue so it reads as text on ivory). Gold is a hairline, never a fill.</p>
+    </header>
+    <ul class="swatches">
+      <li><span class="chip" style="background:oklch(96% 0.012 90)"></span><span><span class="role">Ivory · bg</span><br><span class="val">oklch(96% 0.012 90)</span></span></li>
+      <li><span class="chip" style="background:oklch(91.5% 0.015 88)"></span><span><span class="role">Stone · surface</span><br><span class="val">oklch(91.5% 0.015 88)</span></span></li>
+      <li><span class="chip" style="background:oklch(24% 0.04 250)"></span><span><span class="role">Charcoal navy · ink</span><br><span class="val">oklch(24% 0.04 250)</span></span></li>
+      <li><span class="chip" style="background:oklch(50% 0.135 256)"></span><span><span class="role">GES blue · accent (the one saturated colour)</span><br><span class="val">oklch(50% 0.135 256)</span></span></li>
+      <li><span class="chip" style="background:oklch(22% 0.05 250)"></span><span><span class="role">Deep navy · dark panels</span><br><span class="val">oklch(22% 0.05 250)</span></span></li>
+      <li><span class="chip" style="background:oklch(73% 0.072 84)"></span><span><span class="role">Gold · hairlines only</span><br><span class="val">oklch(73% 0.072 84)</span></span></li>
+    </ul>
+    <div class="type">
+      <p class="label">Display · Space Mono 700</p>
+      <p class="thesis">Technology alone is never <b>the answer.</b></p>
+      <p class="label">Body · Atkinson Hyperlegible 400</p>
+      <p class="sample">Global GES works alongside government and enterprise teams across the Middle East to bring people, process and technology into one accountable programme.</p>
+      <p class="label">Utility · Space Mono, tracked caps</p>
+      <p class="util"><span>ITSM</span><span>Governance</span><span>ISO 27001</span><span>Riyadh</span></p>
+      <p class="formula">People <em>×</em> Process <em>×</em> Technology</p>
+    </div>
+    <p class="pairing">Light ground · cool accent · warm neutrals<br>Paper band: light · Accent hue: 256° (logo)</p>
+  </article>
+
+  <article class="dir d2" aria-labelledby="d2h">
+    <header>
+      <p class="num"><span>Direction 2</span></p>
+      <h2 id="d2h">Navy Boardroom</h2>
+      <p class="why">The same room after hours: the large display is the only light source. Your deep navy becomes the ground, ivory becomes the ink, and the brighter web blue you already use finally has a dark surface to sit on. More presentation, less brochure.</p>
+    </header>
+    <ul class="swatches">
+      <li><span class="chip" style="background:oklch(22% 0.05 250)"></span><span><span class="role">Deep navy · bg</span><br><span class="val">oklch(22% 0.05 250)</span></span></li>
+      <li><span class="chip" style="background:oklch(28% 0.055 248)"></span><span><span class="role">Slate navy · surface</span><br><span class="val">oklch(28% 0.055 248)</span></span></li>
+      <li><span class="chip" style="background:oklch(95% 0.012 90)"></span><span><span class="role">Ivory · ink</span><br><span class="val">oklch(95% 0.012 90)</span></span></li>
+      <li><span class="chip" style="background:oklch(74% 0.022 85)"></span><span><span class="role">Stone · secondary text</span><br><span class="val">oklch(74% 0.022 85)</span></span></li>
+      <li><span class="chip" style="background:oklch(68% 0.155 250)"></span><span><span class="role">Lifted blue · accent (the one saturated colour)</span><br><span class="val">oklch(68% 0.155 250)</span></span></li>
+      <li><span class="chip" style="background:oklch(78% 0.085 84)"></span><span><span class="role">Gold · numerals and rules</span><br><span class="val">oklch(78% 0.085 84)</span></span></li>
+    </ul>
+    <div class="type">
+      <p class="label">Display · Space Mono 700</p>
+      <p class="thesis">Technology alone is never <b>the answer.</b></p>
+      <p class="label">Body · Atkinson Hyperlegible 400</p>
+      <p class="sample">Global GES works alongside government and enterprise teams across the Middle East to bring people, process and technology into one accountable programme.</p>
+      <p class="label">Utility · Atkinson Hyperlegible Mono</p>
+      <p class="util"><span>ITSM</span><span>Governance</span><span>ISO 27001</span><span>Riyadh</span></p>
+      <p class="formula">People <em>×</em> Process <em>×</em> Technology</p>
+    </div>
+    <p class="pairing">Dark ground · cool accent · warm ivory ink<br>Paper band: dark · Accent hue: 250°</p>
+  </article>
+
+  <article class="dir d3" aria-labelledby="d3h">
+    <header>
+      <p class="num"><span>Direction 3</span></p>
+      <h2 id="d3h">Gilt Ledger</h2>
+      <p class="why">Built from the governance side of the business: ISO, frameworks, signed-off programmes. Warmer paper, warm charcoal ink, and gold promoted to the one saturated colour, like a seal on a document. Blue steps back to a quiet navy. Honest note: you asked for restrained gold, and this is not that, so I'm not recommending it.</p>
+    </header>
+    <ul class="swatches">
+      <li><span class="chip" style="background:oklch(95% 0.018 85)"></span><span><span class="role">Warm paper · bg</span><br><span class="val">oklch(95% 0.018 85)</span></span></li>
+      <li><span class="chip" style="background:oklch(87% 0.028 82)"></span><span><span class="role">Sand · surface</span><br><span class="val">oklch(87% 0.028 82)</span></span></li>
+      <li><span class="chip" style="background:oklch(24% 0.015 75)"></span><span><span class="role">Warm charcoal · ink</span><br><span class="val">oklch(24% 0.015 75)</span></span></li>
+      <li><span class="chip" style="background:oklch(62% 0.125 78)"></span><span><span class="role">Gold · accent (the one saturated colour)</span><br><span class="val">oklch(62% 0.125 78)</span></span></li>
+      <li><span class="chip" style="background:oklch(30% 0.05 250)"></span><span><span class="role">Navy · structure and rules</span><br><span class="val">oklch(30% 0.05 250)</span></span></li>
+      <li><span class="chip" style="background:oklch(48% 0.07 252)"></span><span><span class="role">Quiet blue · links only</span><br><span class="val">oklch(48% 0.07 252)</span></span></li>
+    </ul>
+    <div class="type">
+      <p class="label">Display · Space Mono 700</p>
+      <p class="thesis">Technology alone is never <b>the answer.</b></p>
+      <p class="label">Body · Atkinson Hyperlegible 400</p>
+      <p class="sample">Global GES works alongside government and enterprise teams across the Middle East to bring people, process and technology into one accountable programme.</p>
+      <p class="label">Utility · Atkinson Hyperlegible, tracked caps</p>
+      <p class="util"><span>ITSM</span><span>Governance</span><span>ISO 27001</span><span>Riyadh</span></p>
+      <p class="formula">People <em>×</em> Process <em>×</em> Technology</p>
+    </div>
+    <p class="pairing">Light warm ground · warm accent · blue held back<br>Paper band: light · Accent hue: 78°</p>
+  </article>
+
+</section>
