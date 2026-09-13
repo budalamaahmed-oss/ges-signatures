@@ -146,6 +146,6 @@ Avoid: the blue neon data-centre aisle from the current site, circuit boards, fu
 - Current site (`globalges.net`, LEAP 2026 build): keep its paper, navy and gold tokens; keep its editorial section rhythm; replace Georgia with IBM Plex Serif and Arial with Atkinson Hyperlegible.
 - Company profile PDF (`assets/GES-Company-Profile.pdf`) for wording, services, partners and certifications.
 - The client's ChatGPT-built site (home, about, services) supplied in Step 2: use its copy (philosophy, delivery journey, four capability groups, references, credentials, regional hubs) as the source text; do not copy its layout.
-- Email: the earlier LEAP site uses `info@globalges.net`, the newer build uses `info@gesglobal.net`. The site uses `info@globalges.net` until the client confirms which is correct.
+- Email: `info@globalges.net` (confirmed by the client in Step 2; the `gesglobal.net` address in the newer build is wrong).
 - Nyght Serif was the reference the client first named; IBM Plex Serif was the final choice.
 - Client's scene: a consulting team with a client's leadership around a table in a warm stone-and-glass interior.

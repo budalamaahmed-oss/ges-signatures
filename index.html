@@ -142,12 +142,13 @@ img{max-width:100%;height:auto;display:block}
 .hero-meta{display:flex;gap:var(--space-6);flex-wrap:wrap;align-items:baseline}
 .hero-meta a{font-family:var(--font-mono);font-size:var(--text-small)}
 .hero-media{position:relative;min-width:0}
-.hero-media .ph{aspect-ratio:4/5;width:100%}
+.hero-media .ph,.hero-media .hero-img{aspect-ratio:4/5;width:100%}
+.hero-media .hero-img{object-fit:cover;object-position:50% 50%}
 .hero-media-inner{will-change:transform}
 @media (max-width:760px){
   .hero .shell{grid-template-columns:minmax(0,1fr)}
   .hero-copy h1{max-width:none}
-  .hero-media .ph{aspect-ratio:4/3}
+  .hero-media .ph,.hero-media .hero-img{aspect-ratio:4/3}
 }
 
 /* ---------- sections ---------- */
@@ -331,7 +332,7 @@ html.lenis,html.lenis body{height:auto}
       </div>
       <div class="hero-media">
         <div class="hero-media-inner" id="heroParallax">
-          <div class="ph" role="img" aria-label="Placeholder: hero image"><span>hero — GES team with a client's leadership around a table, stone and glass, soft daylight</span></div>
+          <img class="hero-img" src="assets/hero-consulting.jpg" alt="A GES consulting team reviewing an architecture plan with a client's leadership around a table in a glass-walled office" width="1600" height="850" fetchpriority="high">
         </div>
       </div>
     </div>
