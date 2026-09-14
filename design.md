@@ -162,7 +162,7 @@ Each idea has one canonical presentation and is not repeated in the same form el
 - Measured outcomes for the four case studies (each has a marked outcome block).
 - One approved client quote with a name and title, for the Projects page.
 - Approval of the privacy notice draft.
-- Hosting is Hostinger shared hosting. Both forms post to `contact.php`, which sends via PHP mail() from `website@globalges.net` to `info@globalges.net` and redirects to `contact-thanks.html`. That sender mailbox must exist in hPanel; if delivery is unreliable, switch the handler to SMTP with the mailbox credentials.
+- Hosting is Hostinger shared hosting. Both forms post to `contact.php`, which sends via PHP mail() from `info@globalges.net` to `info@globalges.net` (Reply-To set to the visitor) and redirects to `contact-thanks.html`. No extra mailbox is needed; if delivery is unreliable because the domain's email is hosted outside Hostinger, switch the form to a hosted form service or SMTP.
 
 ## QA record
 
