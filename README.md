@@ -15,7 +15,7 @@ about.html            Heritage, presence/offices, partner ecosystem, people
 contact.html          Contact form + office details
 assets/css/main.css   Design system (tokens, typography roles, grid, components, motion)
 assets/js/main.js     Header, scroll reveals, lifecycle story, gallery strip, contact form
-assets/fonts/         Self-hosted Inter (variable) and Instrument Serif
+assets/fonts/         Self-hosted Inter (variable) and IBM Plex Serif
 assets/img/           Optimised WebP/PNG assets (see below)
 brand-source/         Original supplied PNGs (logo, headshots, partner strip, client renders)
 ```
@@ -23,7 +23,7 @@ brand-source/         Original supplied PNGs (logo, headshots, partner strip, cl
 ## Design system (summary)
 
 - **Colour** — navy `#070B1C` ground, gold `#C9A84C` accent, paper `#F4F5F8`; sections alternate `t-dark` / `t-paper` / `t-white` themes via CSS custom properties.
-- **Type** — Instrument Serif for display and section headings; Inter (variable, `opsz`) for body, UI, labels and numerals.
+- **Type** — IBM Plex Serif for display and section headings; Inter (variable, `opsz`) for body, UI, labels and numerals.
 - **Grid** — 12-column, max 1440px, fluid gutters. Utility classes `c-1-6`, `c-8-12`, etc. set explicit column ranges.
 - **Motion** — `.reveal` / `.reveal-line` fade-and-rise on scroll; sticky lifecycle story; all motion disabled under `prefers-reduced-motion`.
 
