@@ -4,9 +4,9 @@
 declare(strict_types=1);
 
 $to      = 'info@globalges.net';
-// Use a mailbox on the site's own domain as the sender so Hostinger's mail server accepts it.
-// Create website@globalges.net in hPanel (Emails) if it does not exist yet.
-$from    = 'website@globalges.net';
+// Sender is the company's own existing address, so no extra mailbox is needed.
+// The visitor's address goes in Reply-To, so replying in the inbox goes straight to them.
+$from    = 'info@globalges.net';
 $subject = 'Website enquiry';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') { header('Location: contact.html'); exit; }
