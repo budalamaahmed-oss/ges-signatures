@@ -102,6 +102,9 @@ Style chosen in Step 2: **Smooth & premium** (inertia scrolling, a soft parallax
 
 ## Components
 
+- **Testimonials (`.voices`)** — one quote at a time on navy: the matching project photo bleeds off the left edge, the quote sits behind a large gold quotation mark, and a client-logo tab strip (WAI-ARIA tabs, arrow keys) rotates every 7s with a gold progress hairline; pauses on hover/focus, static under reduced motion. Placeholder quotes tagged until GES supplies approved statements.
+
+
 Reusable primitives in `styles.css` (all support more than one composition): header and nav (`.nav`, mobile menu is a full-width navy list in the serif), hero, section header (`.section-head`, `.wide` variant), statement block (`.statement`), capability row (`.cap`), project card (`.project`, editorial spans), partner identity (`.partner`, typographic, `.lead` for the exclusive partner), lifecycle (`.lifecycle` with scroll progress), technical diagram (`.diagram`, `.eco-flow`), image frame (`.frame`, `.grid` placeholder, `.unveil`), facts (`.intro-facts`, `.count`), client marquee (`.clients-marquee`: two full-bleed rows of white logo tiles drifting in opposite directions with edge fades, paused on hover, colour marks, static wrapped grid under reduced motion; `.logo-field` static grid kept for inner pages), meridian presence strip (`.meridian`, list fallback on mobile), CTA band (`.cta`), footer. Grounds: `.stone`, `.cream`, `.white`, `.on-navy`, `.on-black`.
 
 

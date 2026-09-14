@@ -206,4 +206,52 @@
     };
     tick(); setInterval(tick, 30000);
   }
+
+  /* testimonials: tabbed voices with auto-rotate */
+  document.querySelectorAll('[data-voices]').forEach(function (root) {
+    var tabs = [].slice.call(root.querySelectorAll('[role="tab"]'));
+    var panels = [].slice.call(root.querySelectorAll('[role="tabpanel"]'));
+    var imgs = [].slice.call(root.querySelectorAll('.voices-media img'));
+    var link = root.querySelector('.voices-case');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var i = 0, timer = null, visible = false, paused = false;
+    function arm() {
+      clearTimeout(timer);
+      root.classList.remove('is-ticking');
+      void root.offsetWidth;
+      if (!visible || paused) return;
+      root.classList.add('is-ticking');
+      if (!reduce) timer = setTimeout(function () { show(i + 1); }, 7000);
+    }
+    function show(n, focus) {
+      i = (n + tabs.length) % tabs.length;
+      tabs.forEach(function (t, k) {
+        var on = k === i;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.tabIndex = on ? 0 : -1;
+        t.classList.toggle('is-active', on);
+        if (on && focus) t.focus();
+      });
+      panels.forEach(function (p, k) { p.classList.toggle('is-active', k === i); });
+      imgs.forEach(function (im, k) { im.classList.toggle('is-active', k === i); });
+      if (link && panels[i].dataset.case) link.href = panels[i].dataset.case;
+      arm();
+    }
+    tabs.forEach(function (t, k) {
+      t.addEventListener('click', function () { show(k); });
+      t.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight') { e.preventDefault(); show(i + 1, true); }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); show(i - 1, true); }
+      });
+    });
+    root.addEventListener('mouseenter', function () { paused = true; clearTimeout(timer); root.classList.add('is-paused'); });
+    root.addEventListener('mouseleave', function () { paused = false; root.classList.remove('is-paused'); arm(); });
+    root.addEventListener('focusin', function () { paused = true; clearTimeout(timer); root.classList.add('is-paused'); });
+    root.addEventListener('focusout', function (e) { if (!root.contains(e.relatedTarget)) { paused = false; root.classList.remove('is-paused'); arm(); } });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) { visible = e.isIntersecting; if (visible) arm(); else clearTimeout(timer); });
+      }, { threshold: 0.35 }).observe(root);
+    } else { visible = true; arm(); }
+  });
 })();
