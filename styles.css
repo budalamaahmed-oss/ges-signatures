@@ -804,7 +804,7 @@ html.lenis,html.lenis body{height:auto}
 .hero-diagram{margin:-4% -12% -4% -10%}
 .hero-diagram .ring{pointer-events:visibleStroke;cursor:default}
 .hero-diagram .ring:hover{stroke:var(--accent);opacity:1;stroke-width:1.8}
-@media (max-width:900px){.hero-diagram{margin:0;max-width:440px}}
+@media (max-width:900px){.hero .shell{grid-template-columns:minmax(0,1fr)}.hero-diagram{margin:0;max-width:440px;justify-self:center;width:100%}}
 /* why rail in the capabilities head */
 .why-rail{display:grid;gap:var(--space-3);border-top:1px solid var(--line);padding-top:var(--space-6)}
 .why-rail li{display:grid;gap:2px;font-size:var(--text-small)}
