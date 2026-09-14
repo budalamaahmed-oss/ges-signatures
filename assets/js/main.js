@@ -143,3 +143,54 @@
   /* current year */
   document.querySelectorAll('[data-year]').forEach(el => { el.textContent = new Date().getFullYear(); });
 })();
+
+/* ---- Oomph pass: count-up, big sequence, lifecycle progress ---- */
+(function () {
+  'use strict';
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* count-up */
+  const counters = document.querySelectorAll('[data-count]');
+  if (counters.length && !reduce) {
+    const run = (el) => {
+      const end = parseInt(el.getAttribute('data-count'), 10); const t0 = performance.now(); const dur = 1400;
+      const tick = (t) => { const p = Math.min(1, (t - t0) / dur); const e = 1 - Math.pow(1 - p, 3); el.textContent = Math.round(end * e); if (p < 1) requestAnimationFrame(tick); };
+      requestAnimationFrame(tick);
+    };
+    const io = new IntersectionObserver((es) => es.forEach(en => { if (en.isIntersecting) { run(en.target); io.unobserve(en.target); } }), { threshold: .4 });
+    counters.forEach(c => { c.textContent = '0'; io.observe(c); });
+  }
+
+  /* big sequence */
+  const bigseq = document.querySelector('.bigseq');
+  if (bigseq && window.matchMedia('(min-width: 821px)').matches && !reduce) {
+    const rows = [...bigseq.querySelectorAll('.bigseq__row')];
+    let lit = -1;
+    const update = () => {
+      const r = bigseq.getBoundingClientRect(); const vh = window.innerHeight;
+      const total = r.height - vh; const p = Math.min(1, Math.max(0, -r.top / total));
+      let i = -1;
+      if (r.top < vh * 0.6 && r.bottom > vh * 0.4) i = Math.min(rows.length - 1, Math.floor(p * rows.length + 0.15));
+      if (r.bottom <= vh * 0.4) i = rows.length - 1;
+      if (i !== lit) { lit = i; rows.forEach((row, k) => row.classList.toggle('is-lit', k === i)); }
+    };
+    window.addEventListener('scroll', update, { passive: true }); window.addEventListener('resize', update); update();
+  } else if (bigseq) {
+    bigseq.querySelectorAll('.bigseq__row').forEach(r => r.classList.add('is-lit'));
+  }
+
+  /* lifecycle progress line */
+  const stagesList = document.querySelector('.lifecycle__stages');
+  if (stagesList && !reduce) {
+    const stages = [...stagesList.querySelectorAll('.stage')];
+    const update = () => {
+      const active = stages.findIndex(s => s.classList.contains('is-active'));
+      const lr = stagesList.getBoundingClientRect();
+      let p = 0;
+      if (active >= 0) { const sr = stages[active].getBoundingClientRect(); p = (sr.top + sr.height / 2 - lr.top) / lr.height; }
+      else if (lr.bottom < window.innerHeight * 0.45) p = 1;
+      stagesList.style.setProperty('--progress', p.toFixed(3));
+    };
+    window.addEventListener('scroll', update, { passive: true }); update();
+  }
+})();
