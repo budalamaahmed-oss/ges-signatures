@@ -102,8 +102,6 @@ Style chosen in Step 2: **Smooth & premium** (inertia scrolling, a soft parallax
 
 ## Components
 
-- **Testimonials (`.voices`)** — one quote at a time on navy: the matching project photo bleeds off the left edge, the quote sits behind a large gold quotation mark, and a client-logo tab strip (WAI-ARIA tabs, arrow keys) rotates every 7s with a gold progress hairline; pauses on hover/focus, static under reduced motion. Placeholder quotes tagged until GES supplies approved statements.
-
 
 Reusable primitives in `styles.css` (all support more than one composition): header and nav (`.nav`, mobile menu is a full-width navy list in the serif), hero, section header (`.section-head`, `.wide` variant), statement block (`.statement`), capability row (`.cap`), project card (`.project`, editorial spans), partner identity (`.partner`, typographic, `.lead` for the exclusive partner), lifecycle (`.lifecycle` with scroll progress), technical diagram (`.diagram`, `.eco-flow`), image frame (`.frame`, `.grid` placeholder, `.unveil`), facts (`.intro-facts`, `.count`), client marquee (`.clients-marquee`: two full-bleed rows of white logo tiles drifting in opposite directions with edge fades, paused on hover, colour marks, static wrapped grid under reduced motion; `.logo-field` static grid kept for inner pages), meridian presence strip (`.meridian`, list fallback on mobile), CTA band (`.cta`), footer. Grounds: `.stone`, `.cream`, `.white`, `.on-navy`, `.on-black`.
 
@@ -156,13 +154,13 @@ Each idea has one canonical presentation and is not repeated in the same form el
 - Pinned horizontal lifecycle: homepage only. About presents the approach as a vertical timeline with a question per stage. Solutions presents its six responsibilities as a numbered two-column list.
 - Ecosystem flow and bordered partner tile grid: Solutions only. Homepage presents the partners as an open flow of marks with a role under each, Alemba leading, no tiles.
 - Meridian presence strip: homepage only. About uses a compact five-hub row.
-- Client marquee and testimonials: homepage only (one quote also on Projects).
+- Client marquee: homepage only. No testimonials section on the homepage (removed at client request); one placeholder quote remains on Projects.
 - Certification badges: About credentials (large) and under the Contact form (small).
 
 ## Content still needed from GES
 
 - Measured outcomes for the four case studies (each has a marked outcome block).
-- One or two client testimonials with a name and title.
+- One approved client quote with a name and title, for the Projects page.
 - Approval of the privacy notice draft.
 - Hosting is Hostinger shared hosting. Both forms post to `contact.php`, which sends via PHP mail() from `website@globalges.net` to `info@globalges.net` and redirects to `contact-thanks.html`. That sender mailbox must exist in hPanel; if delivery is unreliable, switch the handler to SMTP with the mailbox credentials.
 
