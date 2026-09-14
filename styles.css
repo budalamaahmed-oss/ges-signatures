@@ -58,8 +58,7 @@
 }
 
 /* large monitors: widen the page and scale rem-based type and spacing */
-@media (min-width:1700px){:root{--max:1560px}html{font-size:112.5%}}
-@media (min-width:2200px){:root{--max:1760px}html{font-size:125%}}
+@media (min-width:1700px){:root{--max:80vw}html{font-size:calc(16px + (100vw - 1700px) * 0.0047)}}
 
 /* ============ 2. BASE ============ */
 *,*::before,*::after{box-sizing:border-box}
